@@ -67,11 +67,18 @@
                 <div class="box_grid">
                     <figure>
                         <a href="#0" class="wish_bt"></a>
-                        <a href="{{route('front.hotel_details', ['id' =>$getData->id])}}"><img src="{{$getData->first_image}}" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
+                        <a href="{{route('front.hotel_details', ['id' =>$getData->id])}}">
+                            @if($getData->first_image)
+                                <img src="{{$getData->first_image}}" class="img-fluid" alt="" width="800" height="533">
+                            @else
+                                <img src="{{asset('/assets/Front/img/no-image.png')}}" class="img-fluid" alt="" width="800" height="533">
+                            @endif
+                            <div class="read_more"><span>Read more</span></div>
+                        </a>
                         <small>{{$getData->kind}}</small>
                     </figure>
                     <div class="wrapper">
-                        <h3><a href="tour-detail.html">{{$getData->name}}</a></h3>
+                        <h3><a href="{{route('front.hotel_details', ['id' =>$getData->id])}}">{{$getData->name}}</a></h3>
                         <p>{{str_limit($getData->description_struct[0]['paragraphs'][0], 110)}}</p>
                         <!-- <span class="price">From <strong>$54</strong> /per person</span> -->
                     </div>
