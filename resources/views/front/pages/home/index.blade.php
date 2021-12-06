@@ -18,7 +18,11 @@
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <span>Location</span>
-                                <input class="form-control" type="text" placeholder="Where are you going?">
+                                <input class="form-control" id='searchTextField' type="text" placeholder="Where are you going?">
+                                <input type="hidden" id="city" name="city" />
+                                <input type="hidden" id="country" name="country" />
+                                <input type="hidden" id="cityLat" name="cityLat" />
+                                <input type="hidden" id="cityLng" name="cityLng" />
                             </div>
                         </div>
                         <div class="col-lg-3">
