@@ -13,7 +13,7 @@
                 <h3>Book unique experiences</h3>
                 <p>Expolore top rated tours, hotels and restaurants around the world</p>
             
-                <form>
+                <form method="get" action="{{route('front.search')}}"enctype="multipart/form-data">
                     <div class="row no-gutters custom-search-input-2 version_3">
                         <div class="col-lg-4">
                             <div class="form-group">
@@ -21,8 +21,8 @@
                                 <input class="form-control" id='searchTextField' type="text" placeholder="Where are you going?">
                                 <input type="hidden" id="city" name="city" />
                                 <input type="hidden" id="country" name="country" />
-                                <input type="hidden" id="cityLat" name="cityLat" />
-                                <input type="hidden" id="cityLng" name="cityLng" />
+                                <input type="hidden" id="cityLat" name="cityLat" value="13.38886"/>
+                                <input type="hidden" id="cityLng" name="cityLng" value="52.517036"/>
                             </div>
                         </div>
                         <div class="col-lg-3">
@@ -39,11 +39,11 @@
                                     <!-- Quantity Buttons -->
                                     <div class="qtyButtons">
                                         <label>Adults</label>
-                                        <input type="text" name="qtyInput" value="1">
+                                        <input type="text" name="qtyInput_adult" value="1">
                                     </div>
                                     <div class="qtyButtons">
                                         <label>Childrens</label>
-                                        <input type="text" name="qtyInput" value="0">
+                                        <input type="text" name="qtyInput_children" value="0">
                                     </div>
                                 </div>
                             </div>
@@ -73,9 +73,9 @@
                         <a href="#0" class="wish_bt"></a>
                         <a href="{{route('front.hotel_details', ['id' =>$getData->id])}}">
                             @if($getData->first_image)
-                                <img src="{{$getData->first_image}}" class="img-fluid" alt="" width="800" height="533">
+                                <img src="{{$getData->first_image}}" class="img-fluid" alt="" width="300" height="533">
                             @else
-                                <img src="{{asset('/assets/Front/img/no-image.png')}}" class="img-fluid" alt="" width="800" height="533">
+                                <img src="{{asset('/assets/Front/img/no-image.png')}}" class="img-fluid" alt="" width="300" height="533">
                             @endif
                             <div class="read_more"><span>Read more</span></div>
                         </a>
@@ -348,7 +348,7 @@
             }
         });
         $('input[name="dates"]').on('apply.daterangepicker', function(ev, picker) {
-            $(this).val(picker.startDate.format('MM-DD-YY') + ' > ' + picker.endDate.format('MM-DD-YY'));
+            $(this).val(picker.startDate.format('YYYY-MM-DD') + ' > ' + picker.endDate.format('YYYY-MM-DD'));
         });
         $('input[name="dates"]').on('cancel.daterangepicker', function(ev, picker) {
             $(this).val('');

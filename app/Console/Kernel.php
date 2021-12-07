@@ -5,6 +5,7 @@ namespace App\Console;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use App\Data\IncrementData;
+use App\Data\RegionDump;
 
 class Kernel extends ConsoleKernel
 {
@@ -27,6 +28,10 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         $schedule->call(new IncrementData)
+                 ->everyMinute()
+                 ->runInBackground();
+        
+        $schedule->call(new RegionDump)
                  ->everyMinute()
                  ->runInBackground();
     }

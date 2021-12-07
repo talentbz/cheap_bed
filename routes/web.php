@@ -20,6 +20,7 @@ Route::get('/', [App\Http\Controllers\Front\FrontController::class, 'index'])->n
 Route::any('/hotel_list', [App\Http\Controllers\Front\FrontController::class, 'hotel_list'])->name('front.hotel_list');
 Route::get('/hotel_details/{id}', [App\Http\Controllers\Front\FrontController::class, 'hotel_details'])->name('front.hotel_details');
 Route::get('/restaurant', [App\Http\Controllers\Front\FrontController::class, 'restaurant'])->name('front.restaurant');
+Route::any('/search', [App\Http\Controllers\Front\FrontController::class, 'search'])->name('front.search');
 
 Route::get('/about_us', [App\Http\Controllers\Front\FrontController::class, 'about_us'])->name('front.about_us');
 Route::get('/contact_us', [App\Http\Controllers\Front\FrontController::class, 'contact_us'])->name('front.contact_us');

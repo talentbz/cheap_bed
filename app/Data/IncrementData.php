@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Data;
-use App\Models\IncrementGetData;
+use App\Models\Mongo\IncrementGetData;
 
 class IncrementData {
 

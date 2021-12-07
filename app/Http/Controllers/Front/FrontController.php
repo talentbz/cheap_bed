@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Front;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\IncrementGetData;
+use App\Models\Mongo\IncrementGetData;
+use App\Models\Mongo\RegionDumpGetData;
 use App\Models\Test;
 
 class FrontController extends Controller
@@ -57,6 +59,31 @@ class FrontController extends Controller
         curl_close($curl);
         //dd ($response);
         return view('front.pages.hotel_list.index');
+    }
+    
+    public function search(Request $request)
+    {
+        $city = $request->city;
+        $dates = $request->dates;
+        $adult = $request->qtyInput_adult;
+        $children = $request->qtyInput_children;
+        $check_in_date = substr($dates, 0, 10);
+        $check_out_date = substr($dates, 13, 10);
+        $longitude = $request->cityLat;
+        $latitude = $request->cityLng;
+        
+        $getHotelData = getHotelID($check_in_date, $check_out_date, $adult, $children, $longitude, $latitude);
+        $getDatas = [];
+        foreach($getHotelData as $row){
+            $getDatas[] = getHotelData($row->id);
+                //$getDatas[$i]->firstImage = str_replace('{size}', '240x240', $getDatas[$i]->images[0]);
+                //$getDatas[$i]->daily_price = $row[$i]->rates[0]->daily_prices[0];
+        }
+        $paginator = new LengthAwarePaginator($getDatas, count($getDatas), 1, 5);
+        // dd($paginator);
+        return view('front.pages.search.index', [
+            'paginator'  => $paginator,
+        ]);
     }
 
     public function about_us(Request $request)
