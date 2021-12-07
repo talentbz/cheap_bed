@@ -192,9 +192,9 @@
                                 <div class="wrapper">
                                     <a href="{{route('front.hotel_details', ['id' =>$getData->id])}}" class="wish_bt"></a>
                                     <div class="cat_star"><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i></div>
-                                    <h3><a href="hotel-detail.html">{{$getData->name}}</a></h3>
-                                    <p>{{$getData->description_struct[0]->paragraphs[0]}}</p>
-                                    <span class="price">From <strong>$</strong> /per person</span>
+                                    <h3><a href="{{route('front.hotel_details', ['id' =>$getData->id])}}">{{$getData->name}}</a></h3>
+                                    <p>{{str_limit($getData->description_struct[0]->paragraphs[0], 500)}}</p>
+                                    <span class="price">From <strong>€</strong> /per person</span>
                                 </div>
                             </div>
                         </div>

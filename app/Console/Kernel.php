@@ -31,9 +31,9 @@ class Kernel extends ConsoleKernel
                  ->everyMinute()
                  ->runInBackground();
         
-        $schedule->call(new RegionDump)
-                 ->everyMinute()
-                 ->runInBackground();
+        // $schedule->call(new RegionDump)
+        //          ->everyMinute()
+        //          ->runInBackground();
     }
 
     /**

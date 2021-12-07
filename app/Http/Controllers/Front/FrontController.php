@@ -71,7 +71,17 @@ class FrontController extends Controller
         $check_out_date = substr($dates, 13, 10);
         $longitude = $request->cityLat;
         $latitude = $request->cityLng;
-        
+        // $region = RegionDumpGetData::select('hotels')->where('country_code', 'ES')->limit(5)->get();
+        // $hotelID = [];
+        // foreach($region as $row){
+        //     if(!empty($row->hotels)){
+        //         for ($i=0; $i <count($row->hotels) ; $i++) { 
+        //             $hotelID[] =$row->hotels[$i];  
+        //             if(count($hotelID) > 50)
+        //             break;
+        //         }
+        //     }
+        // }
         $getHotelData = getHotelID($check_in_date, $check_out_date, $adult, $children, $longitude, $latitude);
         $getDatas = [];
         foreach($getHotelData as $row){
@@ -80,7 +90,12 @@ class FrontController extends Controller
                 //$getDatas[$i]->daily_price = $row[$i]->rates[0]->daily_prices[0];
         }
         $paginator = new LengthAwarePaginator($getDatas, count($getDatas), 1, 5);
-        // dd($paginator);
+        // $getDatas = [];
+        // foreach($hotelID as $row){
+        //     $getDatas[] = getHotelData($row);
+        // }
+        // $filter_Data = array_filter($getDatas);
+        // $paginator = new LengthAwarePaginator($filter_Data, count($filter_Data), 1, 5);
         return view('front.pages.search.index', [
             'paginator'  => $paginator,
         ]);
@@ -108,6 +123,7 @@ class FrontController extends Controller
 
     public function hotel_details(Request $request, $id)
     {
+        
         return view('front.pages.hotel_details.index');
     }
 

@@ -43,18 +43,29 @@ return [
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
 
+        //local mongodb
         'mongodb' => [
             'driver'   => 'mongodb',
-            // 'dsn'=>'mongodb://cheap_bed_mongo:aksflak222@cluster0-shard-00-00.iulgq.mongodb.net:27017,cluster0-shard-00-01.iulgq.mongodb.net:27017,cluster0-shard-00-02.iulgq.mongodb.net:27017/cheap_bed_mongo?ssl=true&replicaSet=atlas-8m36pv-shard-0&authSource=admin&retryWrites=true&w=majority',
-            'dsn'=>'mongodb+srv://root:aksflak222@cluster0.iulgq.mongodb.net/test?authSource=admin&replicaSet=atlas-8m36pv-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true',
-            'database' => 'cheap_bed_mongo',
-            // 'host'     => env('MONGO_DB_HOST', 'localhost'),
-            // 'database' => env('MONGO_DB_DATABASE'),
-            // 'port'     => env('MONGO_DB_PORT', 27017),
-            // 'username' => env('MONGO_DB_USERNAME'),
-            // 'password' => env('MONGO_DB_PASSWORD'),
-            // 'options'  => []
+            'host'     => env('MONGO_DB_HOST', 'localhost'),
+            'port'     => env('MONGO_DB_PORT', 27017),
+            'database' => env('MONGO_DB_DATABASE'),
+            'username' => env('MONGO_DB_USERNAME'),
+            'password' => env('MONGO_DB_PASSWORD'),
+            'options'  => []
         ],
+        // server mongodb
+        // 'mongodb' => [
+        //     'driver'   => 'mongodb',
+        //     // 'dsn'=>'mongodb://cheap_bed_mongo:aksflak222@cluster0-shard-00-00.iulgq.mongodb.net:27017,cluster0-shard-00-01.iulgq.mongodb.net:27017,cluster0-shard-00-02.iulgq.mongodb.net:27017/cheap_bed_mongo?ssl=true&replicaSet=atlas-8m36pv-shard-0&authSource=admin&retryWrites=true&w=majority',
+        //     'dsn'=>'mongodb+srv://root:aksflak222@cluster0.iulgq.mongodb.net/test?authSource=admin&replicaSet=atlas-8m36pv-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true',
+        //     'database' => 'cheap_bed_mongo',
+        //     // 'host'     => env('MONGO_DB_HOST', 'localhost'),
+        //     // 'database' => env('MONGO_DB_DATABASE'),
+        //     // 'port'     => env('MONGO_DB_PORT', 27017),
+        //     // 'username' => env('MONGO_DB_USERNAME'),
+        //     // 'password' => env('MONGO_DB_PASSWORD'),
+        //     // 'options'  => []
+        // ],
 
         'mysql' => [
             'driver' => 'mysql',
