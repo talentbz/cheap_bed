@@ -42,7 +42,11 @@ function getHotelID($check_in_date, $check_out_date, $adult, $children, $longitu
     $response = curl_exec($curl);
 
     curl_close($curl);
-    return json_decode($response)->data->hotels; 
+    if(json_decode($response)->data){
+        return json_decode($response)->data->hotels; 
+    } else {
+        return null;
+    }
 }
 
 function getHotelData($hotelID) {

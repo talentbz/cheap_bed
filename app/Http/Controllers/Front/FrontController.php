@@ -84,10 +84,12 @@ class FrontController extends Controller
         // }
         $getHotelData = getHotelID($check_in_date, $check_out_date, $adult, $children, $longitude, $latitude);
         $getDatas = [];
-        foreach($getHotelData as $row){
-            $getDatas[] = getHotelData($row->id);
-                //$getDatas[$i]->firstImage = str_replace('{size}', '240x240', $getDatas[$i]->images[0]);
-                //$getDatas[$i]->daily_price = $row[$i]->rates[0]->daily_prices[0];
+        if(!is_null($getHotelData)){
+            foreach($getHotelData as $row){
+                $getDatas[] = getHotelData($row->id);
+                    //$getDatas[$i]->firstImage = str_replace('{size}', '240x240', $getDatas[$i]->images[0]);
+                    //$getDatas[$i]->daily_price = $row[$i]->rates[0]->daily_prices[0];
+            }
         }
         $paginator = new LengthAwarePaginator($getDatas, count($getDatas), 1, 5);
         // $getDatas = [];
