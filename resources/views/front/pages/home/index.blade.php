@@ -21,8 +21,8 @@
                                 <input class="form-control" id='searchTextField' type="text" placeholder="Where are you going?" required>
                                 <input type="hidden" id="city" name="city" />
                                 <input type="hidden" id="country" name="country" />
-                                <input type="hidden" id="cityLat" name="cityLat" value="13.38886"/>
-                                <input type="hidden" id="cityLng" name="cityLng" value="52.517036"/>
+                                <input type="hidden" id="cityLat" name="cityLat" value="52.3675734"/>
+                                <input type="hidden" id="cityLng" name="cityLng" value="4.9041389"/>
                             </div>
                         </div>
                         <div class="col-lg-3">

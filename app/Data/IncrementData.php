@@ -10,8 +10,8 @@ class IncrementData {
         try {
             $curl = curl_init();
             curl_setopt_array($curl, array(
-                CURLOPT_URL => 'https://api.worldota.net/api/b2b/v3/hotel/info/incremental_dump/',
-                // CURLOPT_URL => 'https://api.worldota.net/api/b2b/v3/hotel/info/dump/',
+                // CURLOPT_URL => 'https://api.worldota.net/api/b2b/v3/hotel/info/incremental_dump/',
+                CURLOPT_URL => 'https://api.worldota.net/api/b2b/v3/hotel/info/dump/',
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_USERPWD =>env('EMERGING_TRAVEL_USER').':'.env('EMERGING_TRAVEL_PASS'),
                 CURLOPT_ENCODING => '',
