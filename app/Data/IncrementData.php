@@ -33,6 +33,7 @@ class IncrementData {
             curl_close($curl);
             
             $data = file_get_contents("compress.zstd://".json_decode($response)->data->url);
+            dd(json_decode($response)->data);
             //splite to son file
             // $tokens = explode('} {', $data);
             $tokens = preg_split("/}[\s]?{/", $data);  

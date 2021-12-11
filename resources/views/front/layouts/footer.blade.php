@@ -88,19 +88,17 @@
     <div class="small-dialog-header">
         <h3>Sign In</h3>
     </div>
-    <form>
+    <form id="login_form" method="POST" enctype="multipart/form-data">
+        {{ csrf_field() }}
         <div class="sign-in-wrapper">
-            <a href="#0" class="social_bt facebook">Login with Facebook</a>
-            <a href="#0" class="social_bt google">Login with Google</a>
-            <div class="divider"><span>Or</span></div>
             <div class="form-group">
                 <label>Email</label>
-                <input type="email" class="form-control" name="email" id="email">
+                <input type="email" class="form-control" name="email" id="email" required>
                 <i class="icon_mail_alt"></i>
             </div>
             <div class="form-group">
                 <label>Password</label>
-                <input type="password" class="form-control" name="password" id="password" value="">
+                <input type="password" class="form-control" name="password" id="password" value="" required>
                 <i class="icon_lock_alt"></i>
             </div>
             <div class="clearfix add_bottom_15">
@@ -114,7 +112,7 @@
             </div>
             <div class="text-center"><input type="submit" value="Log In" class="btn_1 full-width"></div>
             <div class="text-center">
-                Don’t have an account? <a href="register.html">Sign up</a>
+                Don’t have an account? <a href="{{route('front.user.signup')}}">Sign up</a>
             </div>
             <div id="forgot_pw">
                 <div class="form-group">
@@ -151,7 +149,16 @@
             });
         }
         google.maps.event.addDomListener(window, 'load', initialize);
+        login_url = "{{route('front.user.login_submit')}}";
+        dashboard_url = "{{route('front.user.dashboard')}}";
 </script>
+<script src="{{ URL::asset('assets/Front/assets/validate.js')}}"></script>
+
+<!-- SPECIFIC SCRIPTS -->
+<!-- toastr plugin -->
+<script src="{{ URL::asset('/assets/libs/toastr/toastr.min.js') }}"></script>
+<script src="{{ URL::asset('/assets/js/pages/toastr.init.js') }}"></script>
+<script src="{{ URL::asset('assets/Front/pages/login.js')}}"></script>
 @yield('script')
 </body>
 </html>

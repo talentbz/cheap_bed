@@ -1,0 +1,23 @@
+
+.header-item {
+    height: inherit !important;
+}
+.filter_type {
+    margin-top: 10px;
+}
+.filter_type ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ededed;
+}
+.filter_type ul li a {
+    color: #333;
+}
+.filter_type ul li a:hover {
+    color:#fc5b62;
+}
+.dropdown-item {
+    color: #444 !important;
+    padding: 0.45rem 1.5rem;
+    font-size: 14px;
+    font-family: 'Poppins';
+}

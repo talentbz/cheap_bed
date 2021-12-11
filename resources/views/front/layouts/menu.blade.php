@@ -7,9 +7,34 @@
         </a>
     </div>
     <ul id="top_menu">
-
-        <li><a href="#" id="sign-in" class="login" title="Sign In">Sign In</a></li>
-        <li><a href="{{route('front.wishlist')}}" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li>
+        @guest('web')
+            <li><a href="#sign-in-dialog" id="sign-in" class="login" title="Sign In">Sign In</a></li>
+        @endguest
+        @auth('web')
+            <li class="dropdown d-inline-block">
+                <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
+                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img class="rounded-circle header-profile-user" src="{{ isset(Auth::user()->avatar) ? asset(Auth::user()->avatar) : asset('/assets/images/users/avatar-1.jpg') }}"
+                        alt="Header Avatar">
+                    <span class="d-none d-xl-inline-block ms-1" key="t-henry">{{ucfirst(Auth::user()->name)}}</span>
+                    <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+                </button>
+                <div class="dropdown-menu dropdown-menu-end">
+                    <!-- item-->
+                    <a class="dropdown-item" href="#"><i class="bx bx-user font-size-16 align-middle me-1"></i> <span>Dashboard</span></a>
+                    <a class="dropdown-item" href="#"><i class="bx bx-edit font-size-16 align-middle me-1"></i> <span>Edit Profile</span></a>
+                    <a class="dropdown-item" href="#"><i class="bx bx-building font-size-16 align-middle me-1"></i> <span>Room Profile</span></a>
+                    <a class="dropdown-item" href="#"><i class="bx bx-lock-open font-size-16 align-middle me-1"></i> <span>Change password</span></a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item text-danger" href="javascript:void();" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">Logout</span></a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </div>
+            </li>
+            <!-- <li><a href="{{route('front.user.dashboard')}}" title="Dashboard"><i class="icon-user"></i>Dashboard</a></li> -->
+        @endauth
+            <li><a href="{{route('front.wishlist')}}" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li>
     </ul>
     <!-- /top_menu -->
     <a href="#menu" class="btn_mobile">

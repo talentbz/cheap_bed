@@ -18,6 +18,7 @@ class FrontController extends Controller
             if (!empty($row['images'])) $row->first_image = str_replace('{size}', '240x240', $row['images'][0]);
             else $row->first_image = '';
         }
+        $getDatas = [];
         return view('front.pages.home.index', [
             'getDatas'  => $getDatas,
         ]);
@@ -69,8 +70,8 @@ class FrontController extends Controller
         $children = $request->qtyInput_children;
         $check_in_date = substr($dates, 0, 10);
         $check_out_date = substr($dates, 13, 10);
-        $longitude = $request->cityLat;
-        $latitude = $request->cityLng;
+        $longitude = $request->cityLng; 
+        $latitude = $request->cityLat;
         // $region = RegionDumpGetData::select('hotels')->where('country_code', 'ES')->limit(5)->get();
         // $hotelID = [];
         // foreach($region as $row){

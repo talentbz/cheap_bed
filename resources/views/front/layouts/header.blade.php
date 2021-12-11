@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title') | Cheap bed finder</title>
     
     <!-- Favicons-->
@@ -24,6 +25,7 @@
     <link href="{{ URL::asset('/assets/Front/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ URL::asset('/assets/Front/css/style.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ URL::asset('/assets/Front/css/vendors.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ URL::asset('/assets/libs/toastr/toastr.min.css') }}" rel="stylesheet" type="text/css" >
     
     <!-- YOUR CUSTOM CSS -->
     <link href="{{ URL::asset('/assets/Front/css/custom.css') }}" rel="stylesheet" type="text/css" />

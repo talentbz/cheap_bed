@@ -30,8 +30,23 @@ Route::get('/wishlist', [App\Http\Controllers\Front\FrontController::class, 'wis
 Route::get('/view_cart', [App\Http\Controllers\Front\FrontController::class, 'view_cart'])->name('front.view_cart');
 Route::get('/check_cart', [App\Http\Controllers\Front\FrontController::class, 'check_cart'])->name('front.check_cart');
 
-Route::get('/test', [App\Http\Controllers\Front\FrontController::class, 'test']);
+Route::prefix('/user')->group(function () {
+    Route::get('/login', [App\Http\Controllers\Front\UserController::class, 'login'])->name('front.user.login');
+    Route::post('/login_submit', [App\Http\Controllers\Front\UserController::class, 'login_submit'])->name('front.user.login_submit');
+    Route::get('/signup', [App\Http\Controllers\Front\UserController::class, 'signup'])->name('front.user.signup');
+    Route::post('/signup_submit', [App\Http\Controllers\Front\UserController::class, 'signup_submit'])->name('front.user.signup_submit');
+});
 
+Route::prefix('/user')->middleware(['auth:web'])->group(function () {
+    Route::get('/dashboard', [App\Http\Controllers\Front\UserController::class, 'dashboard'])->name('front.user.dashboard');
+    Route::get('/room_booking', [App\Http\Controllers\Front\UserController::class, 'room_booking'])->name('front.user.room_booking');
+    Route::get('/room_booking_details/{id}', [App\Http\Controllers\Front\UserController::class, 'room_booking_details'])->name('front.user.room_booking_details');
+    Route::get('/edit_profile', [App\Http\Controllers\Front\UserController::class, 'edit_profile'])->name('front.user.edit_profile');
+    Route::get('/update_profile', [App\Http\Controllers\Front\UserController::class, 'update_profile'])->name('front.user.update_profile');
+    Route::get('/change_password', [App\Http\Controllers\Front\UserController::class, 'edit_profile'])->name('front.user.change_password');
+});
+
+Route::get('/test', [App\Http\Controllers\Front\FrontController::class, 'test']);
 //admin dashboard
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'admin'], function(){

@@ -13,7 +13,7 @@
                 <h3>Book unique experiences</h3>
                 <p>Expolore top rated tours, hotels and restaurants around the world</p>
             
-                <form method="get" action="{{route('front.search')}}"enctype="multipart/form-data">
+                <form method="get" action="{{route('front.search')}}" enctype="multipart/form-data">
                     <div class="row no-gutters custom-search-input-2 version_3">
                         <div class="col-lg-4">
                             <div class="form-group">
@@ -39,11 +39,11 @@
                                     <!-- Quantity Buttons -->
                                     <div class="qtyButtons">
                                         <label>Adults</label>
-                                        <input type="text" name="qtyInput_adult" value="1">
+                                        <input type="text" class="qty_input" name="qtyInput_adult" value="1">
                                     </div>
                                     <div class="qtyButtons">
                                         <label>Childrens</label>
-                                        <input type="text" name="qtyInput_children" value="0">
+                                        <input type="text" class="qty_input" name="qtyInput_children" value="0">
                                     </div>
                                 </div>
                             </div>
