@@ -9391,3 +9391,9 @@ ul.plan-features {
   background-image: none !important;
   height: 0px;
 }
+.header-profile-user {
+    height: 36px;
+    width: 36px;
+    background-color: #f6f6f6;
+    padding: 3px;
+}

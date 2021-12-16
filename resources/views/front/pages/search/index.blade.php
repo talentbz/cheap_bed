@@ -177,36 +177,9 @@
 
             <div class="col-lg-9" id="list_sidebar">
                 <div class="isotope-wrapper">
-                    @foreach($paginator as $getData)
-                    <div class="box_list isotope-item latest">
-                        <div class="row no-gutters">
-                            <div class="col-lg-5">
-                                <figure>
-                                    <small>Parirs Centre</small>
-                                    <a href="{{route('front.hotel_details', ['id' =>$getData->id])}}">
-                                        <img src="{{str_replace('{size}', '240x240', $getData->images[0])}}" class="img-fluid" alt="" width="800" height="533"><div class="read_more">
-                                    </a>
-                                </figure>
-                            </div>
-                            <div class="col-lg-7">
-                                <div class="wrapper">
-                                    <a href="{{route('front.hotel_details', ['id' =>$getData->id])}}" class="wish_bt"></a>
-                                    <div class="cat_star"><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i></div>
-                                    <h3><a href="{{route('front.hotel_details', ['id' =>$getData->id])}}">{{$getData->name}}</a></h3>
-                                    <p>{{str_limit($getData->description_struct[0]->paragraphs[0], 500)}}</p>
-                                    <span class="price">From <strong>€</strong> /per person</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
                 </div>
                 <!-- /isotope-wrapper -->
-                <div class="pagination-wrapper">
-                    
-                </div>
-                
-
+                <p class="text-center add_top_30"><button  id="load_more" class="btn_1 rounded">Load more</button></p>
             </div>
             <!-- /col -->
         </div>
@@ -244,7 +217,6 @@
     </div>
     <!-- /bg_color_1 -->
 </main>
-
 @endsection
 @section('script')
     <script src="http://maps.googleapis.com/maps/api/js"></script>
@@ -264,20 +236,79 @@
             var selector = $(this).attr('data-filter');
             $('.isotope-wrapper').isotope({ filter: selector });
         });
-    </script>
-    <!-- Range Slider -->
-	<script>
-		 $("#range").ionRangeSlider({
+        var data = @json($getDatas);
+        
+        // get min && max price value
+        max_price = Math.max.apply(Math, data.map(function(o) { return o.total; }))
+        min_price = Math.min.apply(Math, data.map(function(o) { return o.total; }))
+        $("#range").ionRangeSlider({
             hide_min_max: true,
             keyboard: true,
-            min: 30,
-            max: 180,
-            from: 60,
-            to: 130,
+            min: min_price,
+            max: max_price,
+            from: min_price,
+            to: max_price,
             type: 'double',
             step: 1,
             prefix: "Min. ",
-            grid: false
+            grid: false,
         });
+        $("#range").on("change", function () {
+            var $inp = $(this);
+            var v = $inp.prop("value");     // input value in format FROM;T
+            
+        });
+
+
+    </script>
+    <!-- Range Slider -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" 
+        integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" 
+            crossorigin="anonymous">
+    </script>
+	<script>
+        $(document).ready(function() {
+            data_length = data.length;
+            click_count = 0;
+            hotel_list(click_count);
+            $('#load_more').click(function(){
+                click_count++;
+                if(click_count * 10< data_length)
+                    hotel_list(click_count * 10);
+            })
+            function hotel_list(count){
+                no_image = "{{asset('/assets/Front/img/hotel_not_found.png')}}";
+                for(i=0+count; i<10+count; i++){
+                    hotel_url = "{{route('front.hotel_details', '')}}"+"/"+data[i].hotelId;
+                    html = '<div class="box_list isotope-item latest">';
+                        html += '<div class="row no-gutters">';
+                            html += '<div class="col-lg-5">';
+                                html += '<figure>';
+                                    html += '<small>'+data[i].propertyType+'</small>';
+                                    html += '<a href="'+hotel_url+'">';
+                                    if(data[i].thumbNailUrl){
+                                        html += '<img src="'+data[i].thumbNailUrl+'" class="img-fluid" alt="" width="800" height="533"><div class="read_more">';
+                                    } else {
+                                        html += '<img src="'+no_image+'" class="img-fluid" alt="" width="800" height="533"><div class="read_more">';
+                                    }
+                                    html += '</a>';
+                                html += '</figure>';
+                            html += '</div>';
+                            html += '<div class="col-lg-7">';
+                                html += '<div class="wrapper">';
+                                    html += '<a href="#" class="wish_bt"></a>';
+                                    html += '<div class="cat_star"><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i></div>';
+                                    html += '<h3><a href="'+hotel_url+'">'+data[i].hotelName+'</a></h3>';
+                                    html += '<p>Dicam diceret ut ius, no epicuri dissentiet philosophia vix. Id usu zril tacimates neglegentur. Eam id legimus torquatos cotidieque, usu decore percipitur definitiones ex, nihil utinam recusabo mel no.</p>';
+                                    html += '<span class="price">From <strong>€ '+data[i].total+'</strong> /per person</span>';
+                                html += '</div>';
+                            html += '</div>';
+                        html += '</div>' ;          
+                    html += '</div>';
+                    $('.isotope-wrapper').append(html);
+                }   
+            }
+            
+        })
 	</script>
 @endsection

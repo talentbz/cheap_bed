@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
+// Route::view('/', 'app');
 
 Route::get('/', [App\Http\Controllers\Front\FrontController::class, 'index'])->name('front.index');
 Route::any('/hotel_list', [App\Http\Controllers\Front\FrontController::class, 'hotel_list'])->name('front.hotel_list');

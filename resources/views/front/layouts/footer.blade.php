@@ -152,13 +152,18 @@
         login_url = "{{route('front.user.login_submit')}}";
         dashboard_url = "{{route('front.user.dashboard')}}";
 </script>
-<script src="{{ URL::asset('assets/Front/assets/validate.js')}}"></script>
+    <!-- SPECIFIC SCRIPTS -->
+    <!-- toastr plugin -->
+    <script src="{{ URL::asset('/assets/libs/toastr/toastr.min.js') }}"></script>
+    <script src="{{ URL::asset('/assets/js/pages/toastr.init.js') }}"></script>
+    <script src="{{ URL::asset('assets/Front/pages/login.js')}}"></script>
 
-<!-- SPECIFIC SCRIPTS -->
-<!-- toastr plugin -->
-<script src="{{ URL::asset('/assets/libs/toastr/toastr.min.js') }}"></script>
-<script src="{{ URL::asset('/assets/js/pages/toastr.init.js') }}"></script>
-<script src="{{ URL::asset('assets/Front/pages/login.js')}}"></script>
+    <script src="{{ URL::asset('assets/libs/bootstrap/bootstrap.min.js')}}"></script>
+    <script src="{{ URL::asset('assets/libs/metismenu/metismenu.min.js')}}"></script>
+    <script src="{{ URL::asset('assets/libs/simplebar/simplebar.min.js')}}"></script>
+    <script src="{{ URL::asset('assets/libs/node-waves/node-waves.min.js')}}"></script>
+    <!-- App js -->
+    <script src="{{ URL::asset('assets/js/app.min.js')}}"></script>
 @yield('script')
 </body>
 </html>

@@ -1,10 +1,6 @@
 @extends('front.layouts.index')
 
 @section('css')
-    <!-- SKOTE THEME CSSS -->
-    <link href="{{ URL::asset('/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ URL::asset('/assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
-    <link href="{{ URL::asset('/assets/Front/pages/dashboard.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('title')
     homepage
@@ -43,11 +39,5 @@
 </main>
 @endsection
 @section('script')
-<script src="{{ URL::asset('assets/libs/jquery/jquery.min.js')}}"></script>
-<script src="{{ URL::asset('assets/libs/bootstrap/bootstrap.min.js')}}"></script>
-<script src="{{ URL::asset('assets/libs/metismenu/metismenu.min.js')}}"></script>
-<script src="{{ URL::asset('assets/libs/simplebar/simplebar.min.js')}}"></script>
-<script src="{{ URL::asset('assets/libs/node-waves/node-waves.min.js')}}"></script>
-<!-- App js -->
-<script src="{{ URL::asset('assets/js/app.min.js')}}"></script>
+
 @endsection

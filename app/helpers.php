@@ -1,17 +1,22 @@
 <?php
 
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Collection;
+
 // prefix word for file name and id
 function str_limit($string, $length) {
     return Str::limit($string, $length, ' ...');
 }
 
-function getHotelID($check_in_date, $check_out_date, $adult, $children, $longitude, $latitude){
+function getHotelData($ip_address, $check_in_date, $check_out_date, $longitude, $latitude, $adult, $children, $rooms){
+    
     $curl = curl_init();
     curl_setopt_array($curl, array(
-    CURLOPT_URL => 'https://api.worldota.net/api/b2b/v3/search/serp/geo/',
+    CURLOPT_URL => 'https://travelnext.works/api/hotel-api-v6/hotel_search',
     CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_USERPWD =>env('EMERGING_TRAVEL_USER').':'.env('EMERGING_TRAVEL_PASS'),
     CURLOPT_ENCODING => '',
     CURLOPT_MAXREDIRS => 10,
     CURLOPT_TIMEOUT => 0,
@@ -19,58 +24,43 @@ function getHotelID($check_in_date, $check_out_date, $adult, $children, $longitu
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
     CURLOPT_CUSTOMREQUEST => 'POST',
     CURLOPT_POSTFIELDS =>'{
+        "user_id":"'.Config::get('constants.TRAVELOPRO.HOEL_USER').'",
+        "user_password": "'.Config::get('constants.TRAVELOPRO.HOTEL_PASS').'",
+        "access": "'.Config::get('constants.TRAVELOPRO.HOTEL_ACESS').'",
+        "ip_address": "'.$ip_address.'",
         "checkin": "'.$check_in_date.'",
         "checkout": "'.$check_out_date.'",
-        "residency": "gb",
-        "language": "en",
-        "guests": [
-            {
-                "adults": '.$adult.',
-                "children": ['.$children.']
-            }
-        ],
         "longitude": '.$longitude.',
         "latitude": '.$latitude.',
-        "radius": 1000,
-        "currency": "USD"
+        "occupancy": [
+            {
+              "room_no": '.$rooms.',
+              "adult": '.$adult.',
+              "child": '.$children.',
+              "child_age": [
+                0
+              ]
+            }
+          ],
+        "requiredCurrency": "GBP"
     }',
     CURLOPT_HTTPHEADER => array(
         'Content-Type: application/json'
     ),
     ));
-
     $response = curl_exec($curl);
-
     curl_close($curl);
-    if(json_decode($response)->data){
-        return json_decode($response)->data->hotels; 
-    } else {
-        return null;
-    }
+    // $getDatas = json_decode($response)->itineraries;
+    
+    // $myCollectionObj = collect($getDatas);
+    // $data = paginate($myCollectionObj);
+    //$paginator = new LengthAwarePaginator($getDatas, count($getDatas), 1, 10);
+    return json_decode($response)->itineraries;
 }
 
-function getHotelData($hotelID) {
-    $curl = curl_init();
-    curl_setopt_array($curl, array(
-    CURLOPT_URL => 'https://api.worldota.net/api/b2b/v3/hotel/info/',
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_USERPWD =>env('EMERGING_TRAVEL_USER').':'.env('EMERGING_TRAVEL_PASS'),
-    CURLOPT_ENCODING => '',
-    CURLOPT_MAXREDIRS => 10,
-    CURLOPT_TIMEOUT => 0,
-    CURLOPT_FOLLOWLOCATION => true,
-    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-    CURLOPT_CUSTOMREQUEST => 'POST',
-    CURLOPT_POSTFIELDS =>'{
-        "id": "'.$hotelID.'",
-        "language": "en"
-    }',
-    CURLOPT_HTTPHEADER => array(
-        'Content-Type: application/json'
-    ),
-    ));
-
-    $response = curl_exec($curl);
-    curl_close($curl);
-    return json_decode($response)->data;
-} 
+function paginate($items, $perPage = 10, $page = null, $options = [])
+{
+    $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
+    $items = $items instanceof Collection ? $items : Collection::make($items);
+    return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
+}

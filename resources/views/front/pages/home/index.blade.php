@@ -21,8 +21,8 @@
                                 <input class="form-control" id='searchTextField' type="text" placeholder="Where are you going?" required>
                                 <input type="hidden" id="city" name="city" />
                                 <input type="hidden" id="country" name="country" />
-                                <input type="hidden" id="cityLat" name="cityLat" value="52.3675734"/>
-                                <input type="hidden" id="cityLng" name="cityLng" value="4.9041389"/>
+                                <input type="hidden" id="cityLat" name="cityLat" />
+                                <input type="hidden" id="cityLng" name="cityLng" />
                             </div>
                         </div>
                         <div class="col-lg-3">
@@ -37,6 +37,10 @@
                                 <a href="#">Add Guests <span class="qtyTotal">1</span></a>
                                 <div class="panel-dropdown-content">
                                     <!-- Quantity Buttons -->
+                                    <div class="qtyButtons">
+                                        <label>Rooms</label>
+                                        <input type="text" name="qtyInput_rooms" value="1">
+                                    </div>
                                     <div class="qtyButtons">
                                         <label>Adults</label>
                                         <input type="text" class="qty_input" name="qtyInput_adult" value="1">

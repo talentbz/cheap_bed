@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Config;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -18,6 +19,7 @@ class FrontController extends Controller
             if (!empty($row['images'])) $row->first_image = str_replace('{size}', '240x240', $row['images'][0]);
             else $row->first_image = '';
         }
+
         $getDatas = [];
         return view('front.pages.home.index', [
             'getDatas'  => $getDatas,
@@ -66,41 +68,18 @@ class FrontController extends Controller
     {
         $city = $request->city;
         $dates = $request->dates;
+        $rooms =$request->qtyInput_rooms;
         $adult = $request->qtyInput_adult;
         $children = $request->qtyInput_children;
         $check_in_date = substr($dates, 0, 10);
         $check_out_date = substr($dates, 13, 10);
         $longitude = $request->cityLng; 
         $latitude = $request->cityLat;
-        // $region = RegionDumpGetData::select('hotels')->where('country_code', 'ES')->limit(5)->get();
-        // $hotelID = [];
-        // foreach($region as $row){
-        //     if(!empty($row->hotels)){
-        //         for ($i=0; $i <count($row->hotels) ; $i++) { 
-        //             $hotelID[] =$row->hotels[$i];  
-        //             if(count($hotelID) > 50)
-        //             break;
-        //         }
-        //     }
-        // }
-        $getHotelData = getHotelID($check_in_date, $check_out_date, $adult, $children, $longitude, $latitude);
-        $getDatas = [];
-        if(!is_null($getHotelData)){
-            foreach($getHotelData as $row){
-                $getDatas[] = getHotelData($row->id);
-                    //$getDatas[$i]->firstImage = str_replace('{size}', '240x240', $getDatas[$i]->images[0]);
-                    //$getDatas[$i]->daily_price = $row[$i]->rates[0]->daily_prices[0];
-            }
-        }
-        $paginator = new LengthAwarePaginator($getDatas, count($getDatas), 1, 5);
-        // $getDatas = [];
-        // foreach($hotelID as $row){
-        //     $getDatas[] = getHotelData($row);
-        // }
-        // $filter_Data = array_filter($getDatas);
-        // $paginator = new LengthAwarePaginator($filter_Data, count($filter_Data), 1, 5);
+        $ip_address = $request->ip();
+       
+        $getDatas = getHotelData($ip_address, $check_in_date, $check_out_date, $longitude, $latitude, $adult, $children, $rooms);
         return view('front.pages.search.index', [
-            'paginator'  => $paginator,
+            'getDatas'  => $getDatas,
         ]);
     }
 
