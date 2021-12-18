@@ -1,5 +1,5 @@
 @extends('front.layouts.index')
-
+<link href="{{ URL::asset('/assets/Front/pages/Hotel/hotel_list.css') }}" rel="stylesheet" type="text/css" />
 @section('css')
 @endsection
 @section('title')
@@ -175,131 +175,51 @@
             </aside>
             <!-- /aside -->
 
-            <div class="col-lg-9" id="list_sidebar">
-                <div class="isotope-wrapper">
-                <div class="box_list isotope-item latest">
-                    <div class="row no-gutters">
-                        <div class="col-lg-5">
-                            <figure>
-                                <small>Parirs Centre</small>
-                                <a href="hotel-detail.html"><img src="img/hotel_1.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-                            </figure>
-                        </div>
-                        <div class="col-lg-7">
-                            <div class="wrapper">
-                                <a href="#0" class="wish_bt"></a>
-                                <div class="cat_star"><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i></div>
-                                <h3><a href="hotel-detail.html">Park Hyatt Hotel</a></h3>
-                                <p>Dicam diceret ut ius, no epicuri dissentiet philosophia vix. Id usu zril tacimates neglegentur. Eam id legimus torquatos cotidieque, usu decore percipitur definitiones ex, nihil utinam recusabo mel no.</p>
-                                <span class="price">From <strong>$54</strong> /per person</span>
+            <div class="col col-lg-9 col-12" id="list_sidebar">
+                <div class="hotel-list-info">
+                    <div class="box_list">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="hotel-image">
+                                    <img src="https://i.travelapi.com/hotels/6000000/5420000/5417300/5417281/3c4155d5.jpg" alt="">
+                                </div>
                             </div>
-                            <ul>
-                                <li><i class="ti-eye"></i> 164 views</li>
-                                <li><div class="score"><span>Superb<em>350 Reviews</em></span><strong>8.9</strong></div></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- /box_list -->
-                <div class="box_list isotope-item popular">
-                    <div class="row no-gutters">
-                        <div class="col-lg-5">
-                            <figure>
-                                <small>Parirs Centre</small>
-                                <a href="tour-detail.html"><img src="img/hotel_2.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-                            </figure>
-                        </div>
-                        <div class="col-lg-7">
-                            <div class="wrapper">
-                                <a href="#0" class="wish_bt"></a>
-                                <div class="cat_star"><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i></div>
-                                <h3><a href="hotel-detail.html">Mariott Hotel</a></h3>
-                                <p>Dicam diceret ut ius, no epicuri dissentiet philosophia vix. Id usu zril tacimates neglegentur. Eam id legimus torquatos cotidieque, usu decore percipitur definitiones ex, nihil utinam recusabo mel no.</p>
-                                <span class="price">From <strong>$124</strong> /per person</span>
-                            </div>
-                            <ul>
-                                <li><i class="ti-eye"></i> 164 views</li>
-                                <li><div class="score"><span>Good<em>350 Reviews</em></span><strong>7.0</strong></div></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- /box_list -->
-                <div class="box_list isotope-item latest">
-                    <div class="row no-gutters">
-                        <div class="col-lg-5">
-                            <figure>
-                                <small>Parirs Centre</small>
-                                <a href="tour-detail.html"><img src="img/hotel_3.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-                            </figure>
-                        </div>
-                        <div class="col-lg-7">
-                            <div class="wrapper">
-                                <a href="#0" class="wish_bt"></a>
-                                <div class="cat_star"><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i></div>
-                                <h3><a href="hotel-detail.html">Lumiere Hotel</a></h3>
-                                <p>Dicam diceret ut ius, no epicuri dissentiet philosophia vix. Id usu zril tacimates neglegentur. Eam id legimus torquatos cotidieque, usu decore percipitur definitiones ex, nihil utinam recusabo mel no.</p>
-                                <span class="price">From <strong>$45</strong> /per person</span>
-                            </div>
-                            <ul>
-                                <li><i class="ti-eye"></i> 164 views</li>
-                                <li><div class="score"><span>Good<em>350 Reviews</em></span><strong>7.0</strong></div></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- /box_list -->
-                <div class="box_list isotope-item popular">
-                    <div class="row no-gutters">
-                        <div class="col-lg-5">
-                            <figure>
-                                <small>Parirs Centre</small>
-                                <a href="tour-detail.html"><img src="img/hotel_4.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-                            </figure>
-                        </div>
-                        <div class="col-lg-7">
-                            <div class="wrapper">
-                                <a href="#0" class="wish_bt"></a>
-                                <div class="cat_star"><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i></div>
-                                <h3><a href="hotel-detail.html">Louvre Hotel</a></h3>
-                                <p>Dicam diceret ut ius, no epicuri dissentiet philosophia vix. Id usu zril tacimates neglegentur. Eam id legimus torquatos cotidieque, usu decore percipitur definitiones ex, nihil utinam recusabo mel no.</p>
-                                <span class="price">From <strong>$25</strong> /per person</span>
-                            </div>
-                            <ul>
-                                <li><i class="ti-eye"></i> 164 views</li>
-                                <li><div class="score"><span>Superb<em>350 Reviews</em></span><strong>9.0</strong></div></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- /box_list -->
-                <div class="box_list isotope-item latest">
-                    <div class="row no-gutters">
-                        <div class="col-lg-5">
-                            <figure>
-                                <small>Parirs Centre</small>
-                                <a href="tour-detail.html"><img src="img/hotel_5.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-                            </figure>
-                        </div>
-                        <div class="col-lg-7">
-                            <div class="wrapper">
-                                <a href="#0" class="wish_bt"></a>
-                                <div class="cat_star"><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i></div>
-                                <h3><a href="hotel-detail.html">Concorde Hotel</a></h3>
-                                <p>Dicam diceret ut ius, no epicuri dissentiet philosophia vix. Id usu zril tacimates neglegentur. Eam id legimus torquatos cotidieque, usu decore percipitur definitiones ex, nihil utinam recusabo mel no.</p>
-                                <span class="price">From <strong>$65</strong> /per person</span>
-                            </div>
-                            <ul>
-                                <li><i class="ti-eye"></i> 164 views</li>
-                                <li><div class="score"><span>Superb<em>350 Reviews</em></span><strong>9.0</strong></div></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- /box_list -->
-                </div>
-                <!-- /isotope-wrapper -->
+                            <div class="col-md-5 hotel-detail">
+                                <div class="detail-wrapper">
+                                    <h6><a href="#">THE FLYING PIG DOWNTOWN</a></h6>
+                                    <div class="cat_star">
+                                        <i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i>
+                                        <a href="#" class="location">
+                                            <i class="icon-location"></i>Nieuwendijk 100, 1012 MR Amsterdam, Netherlands
+                                        </a>
+                                    </div>
+                                    <div class="hotel_fasilite">
+                                        <ol>
+                                            <li class="amenities-text">24-hour reception</li>
+                                            <li class="amenities-text">24-hour reception</li>
+                                            <li class="amenities-text">Lift</li>
+                                            <li class="amenities-text">Games room</li>
+                                            <li class="amenities-text more-facilities">+10
+                                                <span class="tooltiptext">Tooltip text</span>
+                                            </li>
 
+                                        </ol>
+                                    </div>
+                                    <div class="refund-able">
+                                        <button>Non-Refundable</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="review">
+                                    <div class="score"><span>Superb<em>350 Reviews</em></span><strong>8.9</strong></div>
+                                    <h2 class="price"><strong>$ 54</strong></h2>
+                                    <a href="#" class="btn-book">Reserve</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <p class="text-center add_top_30"><a href="#0" class="btn_1 rounded">Load more</a></p>
             </div>
             <!-- /col -->

@@ -1,5 +1,5 @@
 @extends('front.layouts.index')
-
+<link href="{{ URL::asset('/assets/Front/pages/Hotel/hotel_search.css') }}" rel="stylesheet" type="text/css" />
 @section('css')
 @endsection
 @section('title')
@@ -176,7 +176,7 @@
             <!-- /aside -->
 
             <div class="col-lg-9" id="list_sidebar">
-                <div class="isotope-wrapper">
+                <div class="hotel-list-info">
                 </div>
                 <!-- /isotope-wrapper -->
                 <p class="text-center add_top_30"><button  id="load_more" class="btn_1 rounded">Load more</button></p>
@@ -227,88 +227,77 @@
     <!-- Masonry Filtering -->
     <script src="{{ URL::asset('assets/Front/js/isotope.min.js')}}"></script>
     <script>
-        $(window).on('load', function(){
-            var $container = $('.isotope-wrapper');
-            $container.isotope({ itemSelector: '.isotope-item', layoutMode: 'masonry' });
-        });
-
-        $('.filters_listing').on( 'click', 'input', 'change', function(){
-            var selector = $(this).attr('data-filter');
-            $('.isotope-wrapper').isotope({ filter: selector });
-        });
         var data = @json($getDatas);
-        
-        // get min && max price value
-        max_price = Math.max.apply(Math, data.map(function(o) { return o.total; }))
-        min_price = Math.min.apply(Math, data.map(function(o) { return o.total; }))
-        $("#range").ionRangeSlider({
-            hide_min_max: true,
-            keyboard: true,
-            min: min_price,
-            max: max_price,
-            from: min_price,
-            to: max_price,
-            type: 'double',
-            step: 1,
-            prefix: "Min. ",
-            grid: false,
-        });
-        $("#range").on("change", function () {
-            var $inp = $(this);
-            var v = $inp.prop("value");     // input value in format FROM;T
-            
-        });
-
-
+        function hotel_list(count, data){
+            no_image = "{{asset('/assets/Front/img/hotel_not_found.png')}}";
+            for(i=0+count; i<10+count; i++){
+                hotel_url = "{{route('front.hotel_details', '')}}"+"/"+data[i].hotelId;
+                html = '<div class="box_list">';
+                    html += '<div class="row">';
+                        html += '<div class="col-md-4">';
+                            html += '<div class="hotel-image">';
+                                if(data[i].thumbNailUrl){
+                                    html += '<img src="'+data[i].thumbNailUrl+'"  alt="" >';
+                                } else {
+                                    html += '<img src="'+no_image+'"  alt="" >';
+                                }
+                            html += '</div>';
+                        html += '</div>';
+                        html += '<div class="col-md-5 hotel-detail">';
+                            html += '<div class="detail-wrapper">';
+                                html += '<h6><a href="'+hotel_url+'">'+data[i].hotelName+'</a></h6>';
+                                html += '<div class="cat_star">';
+                                    //hotel star rating
+                                    if(data[i].hotelRating){
+                                        for(j=0; j<data[i].hotelRating; j++){
+                                            html +='<i class="icon_star"></i>';
+                                        }
+                                    }
+                                    html +='<a href="#" class="location">';
+                                        html +='<i class="icon-location"></i>'+data[i].address;
+                                    html +='</a>';
+                                html +='</div>'
+                                html += '<div class="hotel_fasilite">';
+                                    html +='<ol>';
+                                        for(k=0; k<data[i].facilities.length; k++){
+                                            html +='<li class="amenities-text">'+data[i].facilities[k]+'</li>';
+                                            if(k==3){break;}
+                                        }
+                                        
+                                        if(data[i].facilities.length>4){
+                                            html += '<li class="amenities-text more-facilities">+ '+(data[i].facilities.length-4);
+                                            html +='<span class="tooltiptext">'
+                                            for(m=4; m<data[i].facilities.length; m++){
+                                                html += data[i].facilities[m];
+                                            }
+                                            html +='</span>';
+                                            html +='</li>';
+                                        }
+                                        
+                                    html +='</ol>';
+                                html +='</div>'
+                                html += '<div class="refund-able">';
+                                    html += '<button>'+data[i].fareType+'</button>';
+                                html += '</div>';
+                            html += '</div>';
+                        html += '</div>';
+                        html += '<div class="col-md-3">';
+                            html += '<div class="review">';
+                                html += '<div class="score"><span>Superb<em>'+data[i].tripAdvisorReview+' Reviews</em></span><strong>'+data[i].tripAdvisorRating+'</strong></div>';
+                                html += '<h2 class="price"><strong>€ '+data[i].total+'</strong></h2>'
+                                html += '<a href="#" class="btn-book">Reserve</a>';
+                            html += '</div>';
+                        html += '</div>';
+                    html += '</div>' ;          
+                html += '</div>';
+                $('.hotel-list-info').append(html);
+            }   
+        }
     </script>
+    <script src="{{ URL::asset('assets/Front/pages/Hotel/hotel_search.js')}}"></script>
     <!-- Range Slider -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" 
         integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" 
             crossorigin="anonymous">
     </script>
-	<script>
-        $(document).ready(function() {
-            data_length = data.length;
-            click_count = 0;
-            hotel_list(click_count);
-            $('#load_more').click(function(){
-                click_count++;
-                if(click_count * 10< data_length)
-                    hotel_list(click_count * 10);
-            })
-            function hotel_list(count){
-                no_image = "{{asset('/assets/Front/img/hotel_not_found.png')}}";
-                for(i=0+count; i<10+count; i++){
-                    hotel_url = "{{route('front.hotel_details', '')}}"+"/"+data[i].hotelId;
-                    html = '<div class="box_list isotope-item latest">';
-                        html += '<div class="row no-gutters">';
-                            html += '<div class="col-lg-5">';
-                                html += '<figure>';
-                                    html += '<small>'+data[i].propertyType+'</small>';
-                                    html += '<a href="'+hotel_url+'">';
-                                    if(data[i].thumbNailUrl){
-                                        html += '<img src="'+data[i].thumbNailUrl+'" class="img-fluid" alt="" width="800" height="533"><div class="read_more">';
-                                    } else {
-                                        html += '<img src="'+no_image+'" class="img-fluid" alt="" width="800" height="533"><div class="read_more">';
-                                    }
-                                    html += '</a>';
-                                html += '</figure>';
-                            html += '</div>';
-                            html += '<div class="col-lg-7">';
-                                html += '<div class="wrapper">';
-                                    html += '<a href="#" class="wish_bt"></a>';
-                                    html += '<div class="cat_star"><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i></div>';
-                                    html += '<h3><a href="'+hotel_url+'">'+data[i].hotelName+'</a></h3>';
-                                    html += '<p>Dicam diceret ut ius, no epicuri dissentiet philosophia vix. Id usu zril tacimates neglegentur. Eam id legimus torquatos cotidieque, usu decore percipitur definitiones ex, nihil utinam recusabo mel no.</p>';
-                                    html += '<span class="price">From <strong>€ '+data[i].total+'</strong> /per person</span>';
-                                html += '</div>';
-                            html += '</div>';
-                        html += '</div>' ;          
-                    html += '</div>';
-                    $('.isotope-wrapper').append(html);
-                }   
-            }
-            
-        })
-	</script>
 @endsection

@@ -43,44 +43,21 @@ return [
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
 
-        //local mongodb
-        'mongodb' => [
-            'driver'   => 'mongodb',
-            'host'     => env('MONGO_DB_HOST', 'localhost'),
-            'port'     => env('MONGO_DB_PORT', 27017),
-            'database' => env('MONGO_DB_DATABASE'),
-            'username' => env('MONGO_DB_USERNAME'),
-            'password' => env('MONGO_DB_PASSWORD'),
-            'options'  => []
-        ],
-        // server mongodb
-        // 'mongodb' => [
-        //     'driver'   => 'mongodb',
-        //     // 'dsn'=>'mongodb://cheap_bed_mongo:aksflak222@cluster0-shard-00-00.iulgq.mongodb.net:27017,cluster0-shard-00-01.iulgq.mongodb.net:27017,cluster0-shard-00-02.iulgq.mongodb.net:27017/cheap_bed_mongo?ssl=true&replicaSet=atlas-8m36pv-shard-0&authSource=admin&retryWrites=true&w=majority',
-        //     'dsn'=>'mongodb+srv://root:aksflak222@cluster0.iulgq.mongodb.net/test?authSource=admin&replicaSet=atlas-8m36pv-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true',
-        //     'database' => 'cheap_bed_mongo',
-        //     // 'host'     => env('MONGO_DB_HOST', 'localhost'),
-        //     // 'database' => env('MONGO_DB_DATABASE'),
-        //     // 'port'     => env('MONGO_DB_PORT', 27017),
-        //     // 'username' => env('MONGO_DB_USERNAME'),
-        //     // 'password' => env('MONGO_DB_PASSWORD'),
-        //     // 'options'  => []
-        // ],
-
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
-            'host' => env('MYSQL_DB_HOST', '127.0.0.1'),
-            'port' => env('MYSQL_DB_PORT', '3306'),
-            'database' => env('MYSQL_DB_DATABASE', 'forge'),
-            'username' => env('MYSQL_DB_USERNAME', 'forge'),
-            'password' => env('MYSQL_DB_PASSWORD', ''),
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', '3306'),
+            'database' => env('DB_DATABASE', 'forge'),
+            'username' => env('DB_USERNAME', 'forge'),
+            'password' => env('DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
             'prefix_indexes' => true,
-            'strict' => true,
+            //'strict' => true,
+            'strict' => false,
             'engine' => null,
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
