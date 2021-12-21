@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\Front\FrontController::class, 'index'])->name('front.index');
 Route::any('/hotel_list', [App\Http\Controllers\Front\FrontController::class, 'hotel_list'])->name('front.hotel_list');
-Route::get('/hotel_details/{id}', [App\Http\Controllers\Front\FrontController::class, 'hotel_details'])->name('front.hotel_details');
+Route::get('/hotel_details/{sessionId}/{productId}/{tokenId}/{hotelId}', [App\Http\Controllers\Front\FrontController::class, 'hotel_details'])->name('front.hotel_details');
 Route::get('/restaurant', [App\Http\Controllers\Front\FrontController::class, 'restaurant'])->name('front.restaurant');
 Route::any('/search', [App\Http\Controllers\Front\FrontController::class, 'search'])->name('front.search');
 
@@ -47,7 +47,7 @@ Route::prefix('/user')->middleware(['auth:web'])->group(function () {
     Route::get('/change_password', [App\Http\Controllers\Front\UserController::class, 'edit_profile'])->name('front.user.change_password');
 });
 
-Route::get('/test', [App\Http\Controllers\Front\FrontController::class, 'test']);
+Route::post('/test', [App\Http\Controllers\Front\FrontController::class, 'test'])->name('front.test');
 //admin dashboard
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'admin'], function(){

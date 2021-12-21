@@ -35,10 +35,11 @@ class FrontController extends Controller
         $longitude = $request->cityLng; 
         $latitude = $request->cityLat;
         $ip_address = $request->ip();
-       
-        $getDatas = getHotelData($ip_address, $check_in_date, $check_out_date, $longitude, $latitude, $adult, $children, $rooms);
+        $sessionId = getHotelData($ip_address, $check_in_date, $check_out_date, $longitude, $latitude, $adult, $children, $rooms)->status->sessionId;
+        $getDatas = getHotelData($ip_address, $check_in_date, $check_out_date, $longitude, $latitude, $adult, $children, $rooms)->itineraries;
         return view('front.pages.search.index', [
             'getDatas'  => $getDatas,
+            'sessionId' => $sessionId,
         ]);
     }
 
@@ -62,9 +63,11 @@ class FrontController extends Controller
         return view('front.pages.faq.index');
     }
 
-    public function hotel_details(Request $request, $id)
+    public function hotel_details(Request $request, $sessionId, $productId, $tokenId, $hotelId)
     {
-        
+        $data = getRoomData($sessionId, $productId, $tokenId, $hotelId);
+        // $data = getRoomData('TVRZME1EQTJPREExTkY4Mk9UaGZPREF1TWpNM0xqUTNMakUyXzMyMjI0NQ==', 'trx109', '9fYgInQbGXdaO40VxHMs', '408663');
+        dd($data);
         return view('front.pages.hotel_details.index');
     }
 
@@ -75,7 +78,12 @@ class FrontController extends Controller
 
     public function test(Request $request)
     {
-        $data = Test::get();
+        $sessionId =$request->sessionId;
+        $productId =$request->productId;
+        $tokenId =$request->tokenId;
+        $hotelId =$request->hotelId;
+
+        $data = getRoomData($sessionId, $productId, $tokenId, $hotelId);
         dd($data);
     }
     public function store(Request $request)

@@ -55,7 +55,32 @@ function getHotelData($ip_address, $check_in_date, $check_out_date, $longitude, 
     // $myCollectionObj = collect($getDatas);
     // $data = paginate($myCollectionObj);
     //$paginator = new LengthAwarePaginator($getDatas, count($getDatas), 1, 10);
-    return json_decode($response)->itineraries;
+    return json_decode($response);
+}
+function getRoomData($sessionId, $productId, $tokenId, $hotelId){
+    $curl = curl_init();
+    curl_setopt_array($curl, array(
+    CURLOPT_URL => 'https://travelnext.works/api/hotel-api-v6/get_room_rates',
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => '',
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 0,
+    CURLOPT_FOLLOWLOCATION => true,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => 'POST',
+    CURLOPT_POSTFIELDS =>'{
+        "sessionId": "'.$sessionId.'",
+        "productId": "'.$productId.'",
+        "tokenId": "'.$tokenId.'",
+        "hotelId": '.$hotelId.',
+    }',
+    CURLOPT_HTTPHEADER => array(
+        'Content-Type: application/json'
+    ),
+    ));
+    $response = curl_exec($curl);
+    curl_close($curl);
+    return json_decode($response);
 }
 
 function paginate($items, $perPage = 10, $page = null, $options = [])

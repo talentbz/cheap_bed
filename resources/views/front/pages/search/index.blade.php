@@ -120,19 +120,19 @@
                             <h6>Star Category</h6>
                             <ul>
                                 <li>
-                                    <label class="container_check"><span class="cat_star"><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i></span> <small>(25)</small>
+                                    <label class="container_check"><span class="cat_star"><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i></span> <small class='five_star'>(25)</small>
+                                        <input class="check_type" type="checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="container_check"><span class="cat_star"><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i></span> <small class="four_star">(26)</small>
                                         <input type="checkbox">
                                         <span class="checkmark"></span>
                                     </label>
                                 </li>
                                 <li>
-                                    <label class="container_check"><span class="cat_star"><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i></span> <small>(26)</small>
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="container_check"><span class="cat_star"><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i></span> <small>(25)</small>
+                                    <label class="container_check"><span class="cat_star"><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i></span> <small class="three_star">(25)</small>
                                         <input type="checkbox">
                                         <span class="checkmark"></span>
                                     </label>
@@ -228,10 +228,14 @@
     <script src="{{ URL::asset('assets/Front/js/isotope.min.js')}}"></script>
     <script>
         var data = @json($getDatas);
+        var sessionId = "{{ $sessionId}}";
         function hotel_list(count, data){
             no_image = "{{asset('/assets/Front/img/hotel_not_found.png')}}";
             for(i=0+count; i<10+count; i++){
-                hotel_url = "{{route('front.hotel_details', '')}}"+"/"+data[i].hotelId;
+                var productId=data[i].productId;
+                var tokenId=data[i].tokenId;
+                var hotelId=data[i].hotelId;
+                hotel_url = `{{url('/hotel_details')}}/${sessionId}/${productId}/${tokenId}/${hotelId}`;
                 html = '<div class="box_list">';
                     html += '<div class="row">';
                         html += '<div class="col-md-4">';
@@ -285,6 +289,15 @@
                             html += '<div class="review">';
                                 html += '<div class="score"><span>Superb<em>'+data[i].tripAdvisorReview+' Reviews</em></span><strong>'+data[i].tripAdvisorRating+'</strong></div>';
                                 html += '<h2 class="price"><strong>€ '+data[i].total+'</strong></h2>'
+                                var test_url = "{{route('front.test')}}";
+                                html += '<form action="'+test_url+'" method="post">';
+                                    html += '@csrf';
+                                    html += '<input type="hidden" name="sessionId" value="'+sessionId+'"/>'
+                                    html += '<input type="hidden" name="productId" value="'+productId+'"/>'
+                                    html += '<input type="hidden" name="tokenId" value="'+tokenId+'"/>'
+                                    html += '<input type="hidden" name="hotelId" value="'+hotelId+'"/>'
+                                    html += '<input type="submit" class="btn-book" value="Reserve">'
+                                html += "</form>";
                                 html += '<a href="#" class="btn-book">Reserve</a>';
                             html += '</div>';
                         html += '</div>';
@@ -293,6 +306,7 @@
                 $('.hotel-list-info').append(html);
             }   
         }
+        
     </script>
     <script src="{{ URL::asset('assets/Front/pages/Hotel/hotel_search.js')}}"></script>
     <!-- Range Slider -->
