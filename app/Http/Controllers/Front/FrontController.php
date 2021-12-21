@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Http;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -66,7 +67,6 @@ class FrontController extends Controller
     public function hotel_details(Request $request, $sessionId, $productId, $tokenId, $hotelId)
     {
         $data = getRoomData($sessionId, $productId, $tokenId, $hotelId);
-        // $data = getRoomData('TVRZME1EQTJPREExTkY4Mk9UaGZPREF1TWpNM0xqUTNMakUyXzMyMjI0NQ==', 'trx109', '9fYgInQbGXdaO40VxHMs', '408663');
         dd($data);
         return view('front.pages.hotel_details.index');
     }

@@ -249,7 +249,7 @@
                         html += '</div>';
                         html += '<div class="col-md-5 hotel-detail">';
                             html += '<div class="detail-wrapper">';
-                                html += '<h6><a href="#">'+data[i].hotelName+'</a></h6>';
+                                html += '<h6><a href="'+hotel_url+'">'+data[i].hotelName+'</a></h6>';
                                 html += '<div class="cat_star">';
                                     //hotel star rating
                                     if(data[i].hotelRating){
@@ -288,17 +288,8 @@
                         html += '<div class="col-md-3">';
                             html += '<div class="review">';
                                 html += '<div class="score"><span>Superb<em>'+data[i].tripAdvisorReview+' Reviews</em></span><strong>'+data[i].tripAdvisorRating+'</strong></div>';
-                                html += '<h2 class="price"><strong>€ '+data[i].total+'</strong></h2>'
-                                var test_url = "{{route('front.test')}}";
-                                // html += '<form action="'+test_url+'" method="post">';
-                                //     html += '@csrf';
-                                //     html += '<input type="hidden" name="sessionId" value="'+sessionId+'"/>'
-                                //     html += '<input type="hidden" name="productId" value="'+productId+'"/>'
-                                //     html += '<input type="hidden" name="tokenId" value="'+tokenId+'"/>'
-                                //     html += '<input type="hidden" name="hotelId" value="'+hotelId+'"/>'
-                                //     html += '<input type="submit" class="btn-book" value="Reserve">'
-                                // html += "</form>";
-                                html += '<a href="#" class="btn-book">Reserve</a>';
+                                html += '<h2 class="price"><strong>€ '+data[i].total+'</strong></h2>';
+                                html += '<a href="'+hotel_url+'" class="btn-book">Reserve</a>';
                             html += '</div>';
                         html += '</div>';
                     html += '</div>' ;          
