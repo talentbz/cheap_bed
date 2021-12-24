@@ -273,6 +273,7 @@
                                             html +='<span class="tooltiptext">'
                                             for(m=4; m<data[i].facilities.length; m++){
                                                 html += data[i].facilities[m];
+                                                html += '<br/>';
                                             }
                                             html +='</span>';
                                             html +='</li>';

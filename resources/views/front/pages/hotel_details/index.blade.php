@@ -1,5 +1,5 @@
 @extends('front.layouts.index')
-
+    <link href="{{ URL::asset('/assets/Front/pages/Hotel/hotel_detail.css') }}" rel="stylesheet" type="text/css" />
 @section('css')
 @endsection
 @section('title')
@@ -22,341 +22,1596 @@
     <!--/hero_in-->
 
     <div class="bg_color_1">
-        <nav class="secondary_nav sticky_horizontal">
-            <div class="container">
-                <ul class="clearfix">
-                    <li><a href="#description" class="active">Description</a></li>
-                    <li><a href="#reviews">Reviews</a></li>
-                    <li><a href="#sidebar">Booking</a></li>
-                </ul>
-            </div>
-        </nav>
         <div class="container margin_60_35">
             <div class="row">
-                <div class="col-lg-8">
-                    <section id="description">
-                        <h2>Description</h2>
-                        <p>Per consequat adolescens ex, cu nibh commune <strong>temporibus vim</strong>, ad sumo viris eloquentiam sed. Mea appareat omittantur eloquentiam ad, nam ei quas oportere democritum. Prima causae admodum id est, ei timeam inimicus sed. Sit an meis aliquam, cetero inermis vel ut. An sit illum euismod facilisis, tamquam vulputate pertinacia eum at.</p>
-                        <p>Cum et probo menandri. Officiis consulatu pro et, ne sea sale invidunt, sed ut sint <strong>blandit</strong> efficiendi. Atomorum explicari eu qui, est enim quaerendum te. Quo harum viris id. Per ne quando dolore evertitur, pro ad cibo commune.</p>
-
-                        <h3>Pictures from our users</h3>
-                        <div class="pictures_grid magnific-gallery clearfix">
-                            <figure><a href="img/detail_gallery/detail_1.jpg" title="Photo title" data-effect="mfp-zoom-in"><img src="{{asset('/assets/Front/img/detail_gallery/detail_1.jpg')}}" alt=""></a></figure>
-                            <figure><a href="img/detail_gallery/detail_2.jpg" title="Photo title" data-effect="mfp-zoom-in"><img src="{{asset('/assets/Front/img/detail_gallery/detail_2.jpg')}}" alt=""></a></figure>
-                            <figure><a href="img/detail_gallery/detail_3.jpg" title="Photo title" data-effect="mfp-zoom-in"><img src="{{asset('/assets/Front/img/detail_gallery/detail_3.jpg')}}" alt=""></a></figure>
-                            <figure><a href="img/detail_gallery/detail_4.jpg" title="Photo title" data-effect="mfp-zoom-in"><img src="{{asset('/assets/Front/img/detail_gallery/detail_4.jpg')}}" alt=""></a></figure>
-                            <figure><a href="img/detail_gallery/detail_5.jpg" title="Photo title" data-effect="mfp-zoom-in"><span class="d-flex align-items-center justify-content-center">+10</span><img src="{{asset('/assets/Front/img/detail_gallery/detail_5.jpg')}}" alt=""></a></figure>
+                <div class="col-lg-9">
+                    <div class="hotel-grid-image">
+                        <div class="row">
+                            <div class="col-sm-4 md-pt">
+                                <div class="md-image">
+                                    <img src="https://cf.bstatic.com/xdata/images/hotel/max500/241265128.jpg?k=36838151580dc6f5b9a57731d26003c0d418c6d462eec2715adc8c134e27b335&o=&hp=1" alt="">
+                                    <img src="https://cf.bstatic.com/xdata/images/hotel/max500/287822312.jpg?k=050bd7d7d5213c5cc5c761fb5499c5bcf865f4e9b1c65235a880bf96ae53c2b2&o=&hp=1" alt="">
+                                </div>
+                            </div>
+                            <div class="col-sm-8 lg-pt">
+                                <div class="lg-image">
+                                    <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/134858615.jpg?k=73791e51bc9f8f8ce7ab21524524ecf06930e22e599c5fcf526b50f7e2a95f55&o=&hp=1" alt="">
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="sm-image">
+                                    <img src="https://cf.bstatic.com/xdata/images/hotel/max300/287822331.jpg?k=1d8138955b1efe08040cf3ef9182dcb02da3e32381fd3ba52eb6726afeb4861e&o=&hp=1" alt="">
+                                    <img src="https://cf.bstatic.com/xdata/images/hotel/max300/241208936.jpg?k=446779130191da1a2cbf2922d3b14478db2386d84161f108b7b273c41aa96cd3&o=&hp=1" alt="">
+                                    <img src="https://cf.bstatic.com/xdata/images/hotel/max300/241208951.jpg?k=4a4e68798a1e74fe934d05cf4bfdaf11fba31ccd86fe5f7143f3dcca6849bed2&o=&hp=1" alt="">
+                                    <img src="https://cf.bstatic.com/xdata/images/hotel/max300/241209242.jpg?k=893a3470b6b48843516883c364d2e9a184386e3bc94dbc4b5aa36452a3760257&o=&hp=1" alt="">
+                                    <img src="https://cf.bstatic.com/xdata/images/hotel/max300/241209233.jpg?k=b83fc8cdf413c0c4efb7c829322a9f1686b8b8355562bff01116183cc25ee56f&o=&hp=1" alt="">
+                                    <a href="javascript:onvoid(0)" data-toggle="modal" data-target="#hotelImageModal" class="hotel-modal">
+                                        <img src="https://cf.bstatic.com/xdata/images/hotel/max300/43444905.jpg?k=3773423c3cc4ac3d9f8a1a1d5206d5dc89b521e0f2594edf0fce107e5793aa34&o=&hp=1" alt="">
+                                        <p>+45 photos</p>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                        <!-- /pictures -->
-                        
-                        <hr>
-
-                        <h3>Program <small>(60 minutes)</small></h3>
-                        <p>
-                            Iudico omnesque vis at, ius an laboramus adversarium. An eirmod doctus admodum est, vero numquam et mel, an duo modo error. No affert timeam mea, legimus ceteros his in. Aperiri honestatis sit at. Eos aeque fuisset ei, case denique eam ne. Augue invidunt has ad, ullum debitis mea ei, ne aliquip dignissim nec.
-                        </p>
-                        <ul class="cbp_tmtimeline">
-                            <li>
-                                <time class="cbp_tmtime" datetime="09:30"><span>30 min.</span><span>09:30</span>
-                                </time>
-                                <div class="cbp_tmicon">
-                                    1
+                    </div>
+                    <!-- /hotel photos -->
+                    <div class="hotel-name-sec">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <ul>
+                                    <li class="selected-type">3.0-star Serviced Apartment</li>
+                                </ul>
+                                <h3>
+                                    Camp Inn Hotel
+                                    <span class="star-rating">
+                                        <i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i>
+                                    </span>
+                                </h3>
+                                <p>Willem de Zwijgerlaan 350, 1055 RD Amsterdam, Amsterdam, 1055 RD, Netherlands, Netherlands</p>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="hotel-price text-center text-md-right">
+                                    <p class="no-price">€ 61.99</p>
+                                    <p class="offer-price">€ 56.35</p>
+                                    <a href="#room-selection-div" class="btn btn-primary">Choose Room</a>
                                 </div>
-                                <div class="cbp_tmlabel">
-                                    <div class="hidden-xs">
-                                        <img src="{{asset('/assets/Front/img/tour_plan_1.jpg')}}" alt="" class="rounded-circle thumb_visit">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /hotel name -->
+                    <div class="highlight-sec">
+                        <h6>Property Highlights</h6>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="highlight-div">
+                                    <div class="left-sec">
+                                    <img src="https://instaetravel.com/trvx-static-asset-files/images/icons/highlight1.png" alt="Hotel Icon">
                                     </div>
-                                    <h4>Interior of the cathedral</h4>
-                                    <p>
-                                        Vero consequat cotidieque ad eam. Ea duis errem qui, impedit blandit sed eu. Ius diam vivendo ne.
-                                    </p>
+                                    <div class="right-sec">
+                                    <p><b>Exceptional reputation</b></p>
+                                    <!-- <p>Recommended by 80% of guests</p> -->
+                                    <p>378 of 418 hotels in Amsterdam</p>
+                                    </div>
                                 </div>
+                            </div>
+                            <div class="col-sm-6 highlight-brdr-left">
+                                <div class="highlight-div">
+                                    <div class="left-sec">
+                                    <img src="https://instaetravel.com/trvx-static-asset-files/images/icons/highlight2.png" alt="Hotel Icon">
+                                    </div>
+                                    <div class="right-sec">
+                                    <p><b>Very good cleanliness</b></p>
+                                    <p>2.5 rating for cleanliness</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="highlight-div highlight-brdr-top">
+                                    <div class="left-sec">
+                                    <img src="https://instaetravel.com/trvx-static-asset-files/images/icons/highlight3.png" alt="Hotel Icon">
+                                    </div>
+                                    <div class="right-sec">
+                                    <p><b>Very good service</b></p>
+                                    <p>3.0 rating for service</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 highlight-brdr-left">
+                                <div class="highlight-div highlight-brdr-top">
+                                    <div class="left-sec">
+                                    <img src="https://instaetravel.com/trvx-static-asset-files/images/icons/highlight4.png" alt="Hotel Icon">
+                                    </div>
+                                    <div class="right-sec">
+                                    <p><b>Very good facilities on premise</b></p>
+                                    <p>2.5 facilities on premise</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /hotel highlight -->
+                    <div class="amenities-img-sec">
+                        <ul>
+                            <li>
+                                <a>
+                                    <div class="icon-div">
+                                    <object data="https://travelnext.works/api/public/images/fac_icons_svg_new/WLAN access.svg" type="image/svg+xml" style="width: 20px;height:20px"></object>
+                                    </div>
+                                </a>
+                                <p>WLAN access</p>
                             </li>
                             <li>
-                                <time class="cbp_tmtime" datetime="11:30"><span>2 hours</span><span>11:30</span>
-                                </time>
-                                <div class="cbp_tmicon">
-                                    2
-                                </div>
-                                <div class="cbp_tmlabel">
-                                    <div class="hidden-xs">
-                                        <img src="{{asset('/assets/Front/img/tour_plan_2.jpg')}}" alt="" class="rounded-circle thumb_visit">
+                                <a>
+                                    <div class="icon-div">
+                                    <object data="https://travelnext.works/api/public/images/fac_icons_svg_new/Bicycle.svg" type="image/svg+xml" style="width: 20px;height:20px"></object>
                                     </div>
-                                    <h4>Statue of Saint Reparata</h4>
-                                    <p>
-                                        Vero consequat cotidieque ad eam. Ea duis errem qui, impedit blandit sed eu. Ius diam vivendo ne.
-                                    </p>
-                                </div>
-                            </li>
-                            <li>
-                                <time class="cbp_tmtime" datetime="13:30"><span>1 hour</span><span>13:30</span>
-                                </time>
-                                <div class="cbp_tmicon">
-                                    3
-                                </div>
-                                <div class="cbp_tmlabel">
-                                    <div class="hidden-xs">
-                                        <img src="{{asset('/assets/Front/img/tour_plan_3.jpg')}}" alt="" class="rounded-circle thumb_visit">
-                                    </div>
-                                    <h4>Huge clock decorated</h4>
-                                    <p>
-                                        Vero consequat cotidieque ad eam. Ea duis errem qui, impedit blandit sed eu. Ius diam vivendo ne.
-                                    </p>
-                                </div>
-                            </li>
-                            <li>
-                                <time class="cbp_tmtime" datetime="14:30"><span>2 hours</span><span>14:30</span>
-                                </time>
-                                <div class="cbp_tmicon">
-                                    4
-                                </div>
-                                <div class="cbp_tmlabel">
-                                    <div class="hidden-xs">
-                                        <img src="{{asset('/assets/Front/img/tour_plan_4.jpg')}}" alt="" class="rounded-circle thumb_visit">
-                                    </div>
-                                    <h4>Vasari's fresco</h4>
-                                    <p>
-                                        Vero consequat cotidieque ad eam. Ea duis errem qui, impedit blandit sed eu. Ius diam vivendo ne.
-                                    </p>
-                                </div>
+                                </a>
+                                <p>Bicycle</p>
                             </li>
                         </ul>
-                        <hr>
-                        <p>Mea appareat omittantur eloquentiam ad, nam ei quas <strong>oportere democritum</strong>. Prima causae admodum id est, ei timeam inimicus sed. Sit an meis aliquam, cetero inermis vel ut. An sit illum euismod facilisis, tamquam vulputate pertinacia eum at.</p>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <ul class="bullets">
-                                    <li>Dolorem mediocritatem</li>
-                                    <li>Mea appareat</li>
-                                    <li>Prima causae</li>
-                                    <li>Singulis indoctum</li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-6">
-                                <ul class="bullets">
-                                    <li>Timeam inimicus</li>
-                                    <li>Oportere democritum</li>
-                                    <li>Cetero inermis</li>
-                                    <li>Pertinacia eum</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- /row -->
-                        
-                        <hr>
-                        <h3>Location</h3>
-                        <div id="map" class="map map_single add_bottom_30"></div>
-                        <!-- End Map -->
-                    </section>
-                    <!-- /section -->
-                
-                    <section id="reviews">
-                        <h2>Reviews</h2>
-                        <div class="reviews-container">
-                            <div class="row">
-                                <div class="col-lg-3">
-                                    <div id="review_summary">
-                                        <strong>8.5</strong>
-                                        <em>Superb</em>
-                                        <small>Based on 4 reviews</small>
-                                    </div>
-                                </div>
-                                <div class="col-lg-9">
-                                    <div class="row">
-                                        <div class="col-lg-10 col-9">
-                                            <div class="progress">
-                                                <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-2 col-3"><small><strong>5 stars</strong></small></div>
-                                    </div>
-                                    <!-- /row -->
-                                    <div class="row">
-                                        <div class="col-lg-10 col-9">
-                                            <div class="progress">
-                                                <div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-2 col-3"><small><strong>4 stars</strong></small></div>
-                                    </div>
-                                    <!-- /row -->
-                                    <div class="row">
-                                        <div class="col-lg-10 col-9">
-                                            <div class="progress">
-                                                <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-2 col-3"><small><strong>3 stars</strong></small></div>
-                                    </div>
-                                    <!-- /row -->
-                                    <div class="row">
-                                        <div class="col-lg-10 col-9">
-                                            <div class="progress">
-                                                <div class="progress-bar" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-2 col-3"><small><strong>2 stars</strong></small></div>
-                                    </div>
-                                    <!-- /row -->
-                                    <div class="row">
-                                        <div class="col-lg-10 col-9">
-                                            <div class="progress">
-                                                <div class="progress-bar" role="progressbar" style="width: 0" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-2 col-3"><small><strong>1 stars</strong></small></div>
-                                    </div>
-                                    <!-- /row -->
-                                </div>
-                            </div>
-                            <!-- /row -->
-                        </div>
-
-                        <hr>
-
-                        <div class="reviews-container">
-
-                            <div class="review-box clearfix">
-                                <figure class="rev-thumb"><img src="{{asset('/assets/Front/img/avatar1.jpg')}}" alt="">
-                                </figure>
-                                <div class="rev-content">
-                                    <div class="rating">
-                                        <i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i>
-                                    </div>
-                                    <div class="rev-info">
-                                        Admin – April 03, 2016:
-                                    </div>
-                                    <div class="rev-text">
-                                        <p>
-                                            Sed eget turpis a pede tempor malesuada. Vivamus quis mi at leo pulvinar hendrerit. Cum sociis natoque penatibus et magnis dis
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /review-box -->
-                            <div class="review-box clearfix">
-                                <figure class="rev-thumb"><img src="{{asset('/assets/Front/img/avatar2.jpg')}}" alt="">
-                                </figure>
-                                <div class="rev-content">
-                                    <div class="rating">
-                                        <i class="icon-star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i>
-                                    </div>
-                                    <div class="rev-info">
-                                        Ahsan – April 01, 2016:
-                                    </div>
-                                    <div class="rev-text">
-                                        <p>
-                                            Sed eget turpis a pede tempor malesuada. Vivamus quis mi at leo pulvinar hendrerit. Cum sociis natoque penatibus et magnis dis
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /review-box -->
-                            <div class="review-box clearfix">
-                                <figure class="rev-thumb"><img src="{{asset('/assets/Front/img/avatar3.jpg')}}" alt="">
-                                </figure>
-                                <div class="rev-content">
-                                    <div class="rating">
-                                        <i class="icon-star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i>
-                                    </div>
-                                    <div class="rev-info">
-                                        Sara – March 31, 2016:
-                                    </div>
-                                    <div class="rev-text">
-                                        <p>
-                                            Sed eget turpis a pede tempor malesuada. Vivamus quis mi at leo pulvinar hendrerit. Cum sociis natoque penatibus et magnis dis
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /review-box -->
-                        </div>
-                        <!-- /review-container -->
-                    </section>
-                    <!-- /section -->
-                    <hr>
-
-                        <div class="add-review">
-                            <h5>Leave a Review</h5>
-                            <form>
-                                <div class="row">
-                                    <div class="form-group col-md-6">
-                                        <label>Name and Lastname *</label>
-                                        <input type="text" name="name_review" id="name_review" placeholder="" class="form-control">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label>Email *</label>
-                                        <input type="email" name="email_review" id="email_review" class="form-control">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label>Rating </label>
-                                        <div class="custom-select-form">
-                                        <select name="rating_review" id="rating_review" class="wide">
-                                            <option value="1">1 (lowest)</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5" selected>5 (medium)</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
-                                            <option value="10">10 (highest)</option>
-                                        </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label>Your Review</label>
-                                        <textarea name="review_text" id="review_text" class="form-control" style="height:130px;"></textarea>
-                                    </div>
-                                    <div class="form-group col-md-12 add_top_20">
-                                        <input type="submit" value="Submit" class="btn_1" id="submit-review">
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                </div>
-                <!-- /col -->
-                
-                <aside class="col-lg-4" id="sidebar">
-                    <div class="box_detail booking">
-                        <div class="price">
-                            <span>45$ <small>person</small></span>
-                            <div class="score"><span>Good<em>350 Reviews</em></span><strong>7.0</strong></div>
-                        </div>
-                        <div class="form-group input-dates">
-                            <input class="form-control" type="text" name="dates" placeholder="When..">
-                            <i class="icon_calendar"></i>
-                        </div>
-                        <div class="panel-dropdown">
-                            <a href="#">Guests <span class="qtyTotal">1</span></a>
-                            <div class="panel-dropdown-content right">
-                                <div class="qtyButtons">
-                                    <label>Adults</label>
-                                    <input type="text" name="qtyInput" value="1">
-                                </div>
-                                <div class="qtyButtons">
-                                    <label>Childrens</label>
-                                    <input type="text" name="qtyInput" value="0">
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#" class="btn_1 full-width purchase">Purchase</a>
-                        <a href="#" class="btn_1 full-width outline wishlist"><i class="icon_heart"></i> Add to wishlist</a>
-                        <div class="text-center"><small>No money charged in this step</small></div>
                     </div>
-                    <ul class="share-buttons">
-                        <li><a class="fb-share" href="#0"><i class="social_facebook"></i> Share</a></li>
-                        <li><a class="twitter-share" href="#0"><i class="social_twitter"></i> Tweet</a></li>
-                        <li><a class="gplus-share" href="#0"><i class="social_googleplus"></i> Share</a></li>
-                    </ul>
-                </aside>
+                    <!-- /amenities section -->
+
+                </div>
+                <!-- /hotel details-->
+                
+                <div class="col-lg-3">
+                    <div class="rating-sec">
+                        <div class="rating-div">
+                            <div class="rating-left">
+                                2.5                         
+                            </div>
+                            <div class="rating-right">
+                                <p>
+                                    Good                             
+                                </p>
+                                <small>/5</small>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /rating section -->
+                    <div class="map-div">
+                        <div class="top-div" data-target="#map-popup" data-toggle="modal">
+                            <img src="https://instaetravel.com/trvx-static-asset-files/images/icons/map-view.svg" class="top-img">
+                            <img src="https://instaetravel.com/trvx-static-asset-files/images/icons/img-map-pin.svg" class="center-img">
+                            <div class="map-text">
+                                <h5>SEE A MAP VIEW</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /map section -->
+                    <div class="landmark-sec">
+                        <h6 class="head"><b>Nearby Landmarks</b></h6>
+                        <div class="landmark-div">
+                            <p class="main-head"><b>Restaurant</b></p>
+                            <ul>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Pacific Parc                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        0.99km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Cafe Restaurant Amsterdam                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        0.72km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Winkel                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.97km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Loving Hut Amsterdam - Vegan House                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        0.3km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        't Smalle                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.91km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Fuoco Vivo                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.61km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        De Marktkantine                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        0.97km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Domino's Pizza                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        0.6km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Foodhallen                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.81km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Brouwerij Troost Westergas                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.06km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Yang Ming Asian Cuisine                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        0.69km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Floor17                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.9km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Moeders                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.69km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        La Perla                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.76km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Japanese Pancake World                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.8km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Rooster Amsterdam                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.08km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Boca's                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.91km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Vegabond                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.54km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Koffie Ende Koeck                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        0.98km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Piqniq                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.97km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Yam Yam                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.28km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Chong Hing                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        0.27km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Pizzeria Michelangelo                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        0.34km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Moak Pancakes - West (Formerly Mook)                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.56km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Cafe Cook                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.33km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Hap Li Express                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        0.66km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Studio Westerpark                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        0.65km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Tonton Club West                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        0.67km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Rotisserie West                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.55km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Hostaria                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.78km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        De Blaffende Vis                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.79km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Pesca                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.8km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Kinnaree Thai Cuisine                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.81km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Remise47                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.82km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        G's Jordaan                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.83km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        De Reiger                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.84km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Bagels &amp; Beans Bos en Lommer                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        0.83km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Pizzalina                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        0.83km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Natuurlijk Smullen                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        0.88km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        KFC                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        0.88km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Daalder                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.9km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Bagels &amp; Beans                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.92km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Asian Plaza                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        0.91km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Spanjer en van Twist                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.98km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Carla's Bistro bij Ons                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.99km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Wen Chow                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.01km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Wilde Westen                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.18km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Suri Kitchen                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.34km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Mehtap                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.37km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Zaal 100                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.4km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        W Xie                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.42km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Mitsos                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.43km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        De Liefde                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.44km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Bar Spek                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.47km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Dophert                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.63km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Chef Sjef                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        0.34km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Pinsa's                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.66km                            
+                                    </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="landmark-div">
+                            <p class="main-head"><b>Landmark/Attraction</b></p>
+                            <ul>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Westergasfabriek                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.04km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Haarlemmerpoort                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.7km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        The Tourist Salon Boat                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.93km                            
+                                    </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="landmark-div">
+                            <p class="main-head"><b>Bar/Pub</b></p>
+                            <ul>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Café Sound Garden                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.64km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Waterkant Amsterdam                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.89km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        De Nieuwe Anita                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.39km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        De Kat in de Wijngaert                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.79km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        The Breakfast Club                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.81km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Cafe Lowietje                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.68km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Cafe Nol                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.8km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Wester Wijnfabriek                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.07km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        The Frits                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.47km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Café Same Place                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.51km                            
+                                    </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="landmark-div">
+                            <p class="main-head"><b>Public Transport</b></p>
+                            <ul>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Metro-Station Sloterdijk                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.54km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        GVB-Sloterdijk                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.38km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Metro-de Vlugtlaan                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.43km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Amsterdam, de Clercqstraat                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.59km                            
+                                    </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="landmark-div">
+                            <p class="main-head"><b>Museum</b></p>
+                            <ul>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Museum het Schip                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.38km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Anne Frank Huis                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.97km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Amsterdam Tulip Museum                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.92km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Amsterdam Cheese Museum                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.93km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Stedelijk Museum Bureau Amsterdam                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.94km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Electric Ladyland                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.76km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Pianola Museum                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.81km                            
+                                    </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="landmark-div">
+                            <p class="main-head"><b>Food &amp; Drink</b></p>
+                            <ul>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        De Bakkerswinkel                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.19km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Snoepwinkeltje                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.76km                            
+                                    </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="landmark-div">
+                            <p class="main-head"><b>Religious Place</b></p>
+                            <ul>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Westerkerk                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.97km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Noorderkerk                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.98km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Jeruzalemkerk                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.33km                            
+                                    </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="landmark-div">
+                            <p class="main-head"><b>Dance or Nightclub</b></p>
+                            <ul>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Westerunie                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        0.95km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Warehouse Elementenstraat                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.34km                            
+                                    </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="landmark-div">
+                            <p class="main-head"><b>Coffee/Tea</b></p>
+                            <ul>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Coffeeshop Paradox                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.83km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Lot Sixty One Coffee Roasters                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.96km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Espressofabriek                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.03km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Kattencafe Kopjes                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.37km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Kookkollektief                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        0.34km                            
+                                    </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="landmark-div">
+                            <p class="main-head"><b>Shop</b></p>
+                            <ul>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Boer Geert                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.9km                            
+                                    </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="landmark-div">
+                            <p class="main-head"><b>Theatre, Music &amp; Culture</b></p>
+                            <ul>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Boom Chicago                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.81km                            
+                                    </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Maloe Melo                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.96km                            
+                                    </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="landmark-div">
+                            <p class="main-head"><b>Sights &amp; Museums</b></p>
+                            <ul>
+                                <li>
+                                    <div class="row">
+                                    <div class="col-8">
+                                        Kochxbos Gallery Amsterdam                            
+                                    </div>
+                                    <div class="col-4 text-right pl-0">
+                                        1.82km                            
+                                    </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /landmark section -->
+                </div>
             </div>
             <!-- /row -->
+            <div class="room-select-section" id="room-selection-div">
+                <h3>Select your room</h3>
+                <div class="room-div room-info-box">
+                    <h6>TWIN STANDARD ROOM-Room Only</h6>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="room-head hidden-xs">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <p>Benefits</p>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <p>Sleeps</p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <p>Price</p>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <p>Most Booked</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="room-content">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <p><b>Your price includes:</b></p>
+                                        <ul>
+                                            <li>
+                                                <i class="fa fa-check"></i>
+                                                Free Wi-Fi
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-check"></i>
+                                                Extra low price! (non-refundable)
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-check"></i>
+                                                Room Only                                         
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="icons-include">
+                                            <i class="fa fa-male"></i>
+                                            <i class="fa fa-male"></i>
+                                            <!--<span class="more-people">+</span>-->
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="room-price-sec">
+                                            <p class="no-price">€ 61.99</p>
+                                            <p class="offer-price">€ 56.35</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <form action="#" method="post" accept-charset="utf-8">                 
+                                            <input type="hidden" name="productId" value="trx102">
+                                            <input type="hidden" name="tokenId" value="20211224_1_2_0_104_zen8a3c23fffcab495e8113069a6927b31c_1640308564">
+                                            <input type="hidden" name="rateBasisId" value="NDMyOTI=">
+                                            <input type="hidden" name="roomId" value="7253">
+                                            <button type="submit" class="btn-book">Book Now</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- filter option -->
+            <div class="more-hotel-info">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="rating-sec">
+                            <p><b>Overall rating:</b></p>
+                            <div class="rating-div">
+                                <div class="rating-left">
+                                    2.5                         
+                                </div>
+                                <div class="rating-right">
+                                    <p>Excellent</p>
+                                    <small>199 reviews</small>
+                                </div>
+                            </div>
+                            <div class="overall-div">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <p>Cleanliness</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="progress">
+                                        <div class="progress-bar" style="width:40%;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-2 text-right pl-0">
+                                        <p class="rate-text">2.5</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="overall-div">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <p>Facilities</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="progress">
+                                        <div class="progress-bar" style="width:20%;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-2 pl-0 text-right">
+                                        <p class="rate-text">2.0</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="overall-div">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <p>Location</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="progress">
+                                        <div class="progress-bar" style="width:40%;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-2 text-right">
+                                        <p class="rate-text">3.0</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- hotel rating -->
+                    <div class="col-lg-8">
+                        <div class="hotel-desc-sec">
+                            <div class="hotel-img-div">
+                                <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/134858615.jpg?k=73791e51bc9f8f8ce7ab21524524ecf06930e22e599c5fcf526b50f7e2a95f55&o=&hp=1" alt="Hotel Image" class="">
+                                <div class="hotel-name-info">
+                                  <h5>More about</h5>
+                                  <h3>Camp Inn Hotel</h3>
+                                </div>    
+                            </div>
+                            <div class="hotel-desc-div">
+                                <p><br><b>Property Information:</b> <br>&nbsp;Pets not allowed  Check-in time starts at 2 PM  Check-out time is noon&nbsp; <br><br><b>Property Description:</b> <br>&nbsp;</p><p><b>Property Location</b> <br>With a stay at Camp Inn Hotel Amsterdam in Amsterdam (Amsterdam West), you'll be within a 10-minute drive of Anne Frank House and The 9 Streets.  This hotel is 2.3 mi (3.7 km) from Rijksmuseum and 2.3 mi (3.8 km) from Vondelpark.</p><p><b>Rooms</b> <br>Make yourself at home in one of the 42 air-conditioned rooms featuring LCD televisions. Complimentary wireless Internet access keeps you connected, and digital programming is available for your entertainment. Private bathrooms with showers feature rainfall showerheads and complimentary toiletries. Conveniences include safes and desks, and housekeeping is provided daily.</p><p><b>Amenities</b> <br>Enjoy recreation amenities such as bicycles to rent or take in the view from a terrace.</p><p><b>Dining</b> <br>Mingle with other guests at the complimentary reception, held daily. Buffet breakfasts are served on weekdays from 7:30 AM to 10:30 AM for a fee.</p><p><b>Business, Other Amenities</b> <br>Featured amenities include a 24-hour front desk, luggage storage, and coffee/tea in a common area.</p>&nbsp; <br><br><b>Room Information:</b> <br>&nbsp;<p><b>National Rating</b> <br>This property does not have a Netherlands Tourist Board rating. For the benefit of our customers, we have provided a rating based on our rating system.</p><p><b>Fees</b> <br></p><p>The following fees and deposits are charged by the property at time of service, check-in, or check-out. </p> <ul> <li>Fee for buffet breakfast: EUR 15 per person (approximately)</li>                              </ul> <p>The above list may not be comprehensive. Fees and deposits may not include tax and are subject to change. </p><p></p><p><b>Mandatory Fees and Taxes</b> <br></p><p>You'll be asked to pay the following charges at the property:</p> <ul><li>A 6.422 percent city/local tax will be charged</li></ul> <p>We have included all charges provided to us by the property. However, charges can vary, for example, based on length of stay or the room you book. </p><p></p>&nbsp; <br><br><b>Check In Instructions:</b> <br>&nbsp;Extra-person charges may apply and vary depending on property policy. <br>Government-issued photo identification and a credit card, debit card, or cash deposit are required at check-in for incidental charges. <br>Special requests are subject to availability upon check-in and may incur additional charges. Special requests cannot be guaranteed.  <ul><li>The name on the credit card used at check-in to pay for incidentals must be the primary name on the guestroom reservation. </li>Special cancellation policies or charges may apply for group reservations (more than 8 rooms for the same property / stay dates). </ul>&nbsp; <br><br><b>Check In Instructions:</b> <br>&nbsp;<p><b>National Rating</b> <br>This property does not have a Netherlands Tourist Board rating. For the benefit of our customers, we have provided a rating based on our rating system.</p><p><b>Fees</b> <br></p><p>The following fees and deposits are charged by the property at time of service, check-in, or check-out. </p> <ul> <li>Fee for buffet breakfast: EUR 15 per person (approximately)</li>                              </ul> <p>The above list may not be comprehensive. Fees and deposits may not include tax and are subject to change. </p><p></p><p><b>Mandatory Fees and Taxes</b> <br></p><p>You'll be asked to pay the following charges at the property:</p> <ul><li>A 6.422 percent city/local tax will be charged</li></ul> <p>We have included all charges provided to us by the property. However, charges can vary, for example, based on length of stay or the room you book. </p><p></p>&nbsp; <br><p></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /hotel info -->
+                </div>
+            </div>
+            <!--/more hotel info  -->
+            <div class="facilities-sec">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <h6>Most talked about facilities</h6>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="facilities-div">
+                            <ul>
+                            <li>
+                                <a>
+                                    <div class="icon-div">
+                                        <object data="https://travelnext.works/api/public/images/fac_icons_svg_new/WLAN access.svg" type="image/svg+xml" style="width: 20px;height:20px"></object>
+                                    </div>
+                                </a>
+                                <p>WLAN access</p>
+                            </li>
+                            <li>
+                                <a>
+                                    <div class="icon-div">
+                                        <object data="https://travelnext.works/api/public/images/fac_icons_svg_new/Bicycle.svg" type="image/svg+xml" style="width: 20px;height:20px"></object>
+                                    </div>
+                                </a>
+                                <p>Bicycle</p>
+                            </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /facilities infos -->
+            <div class="hotel-review-section">
+                <h3>Reviews</h3>
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a href="#tripadvisor-review" class="nav-link active" role="tab" data-toggle="tab">Tripadvisor Review</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane show active" role="tabpanel" id="tripadvisor-review">
+                        <div class="review-content">
+                            <div class="row">
+                                <div class="col-md-3 col-lg-1 pr-0">
+                                <div class="review-left-sec">
+                                    2.5<span> /5</span>
+                                </div>
+                                <h6></h6>
+                                </div>
+                                <div class="col-md-9 col-lg-6">
+                                <div class="progress-sec">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="progress-div">
+                                            <div class="progress">
+                                                <div class="progress-bar" style="width:20%;"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-9 text-left">
+                                                    <p class="rate-text"></p>
+                                                </div>
+                                                <div class="col-3 text-right">
+                                                    <p class="rate-num">2.5</p>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="progress-div">
+                                            <div class="progress">
+                                                <div class="progress-bar" style="width:50%;"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-9 text-left">
+                                                    <p class="rate-text"></p>
+                                                </div>
+                                                <div class="col-3 text-right">
+                                                    <p class="rate-num">3.0</p>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="progress-div">
+                                            <div class="progress">
+                                                <div class="progress-bar" style="width:40%;"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-9 text-left">
+                                                    <p class="rate-text">Location</p>
+                                                </div>
+                                                <div class="col-3 text-right">
+                                                    <p class="rate-num">3.0</p>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="progress-div">
+                                            <div class="progress">
+                                                <div class="progress-bar" style="width:20%;"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-9 text-left">
+                                                    <p class="rate-text"></p>
+                                                </div>
+                                                <div class="col-3 text-right">
+                                                    <p class="rate-num">2.0</p>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="progress-div">
+                                            <div class="progress">
+                                                <div class="progress-bar" style="width:50%;"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-9 text-left">
+                                                    <p class="rate-text"></p>
+                                                </div>
+                                                <div class="col-3 text-right">
+                                                    <p class="rate-num">3.0</p>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="progress-div">
+                                            <div class="progress">
+                                                <div class="progress-bar" style="width:40%;"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-9 text-left">
+                                                    <p class="rate-text"></p>
+                                                </div>
+                                                <div class="col-3 text-right">
+                                                    <p class="rate-num">2.5</p>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="rating-brdr-left col-md-12 col-lg-5">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <p><b>Rating</b></p>
+                                        <ul>
+                                            <li>
+                                            <label>
+                                            <i class="icon-right-hand"></i>&nbsp;&nbsp;9+  (69)
+                                            </label>
+                                            </li>
+                                            <li>
+                                            <label>
+                                            <i class="icon-right-hand"></i>&nbsp;&nbsp;8-9  (30)
+                                            </label>
+                                            </li>
+                                            <li>
+                                            <label>
+                                            <i class="icon-right-hand"></i>&nbsp;&nbsp;7-8  (41)
+                                            </label>
+                                            </li>
+                                            <li>
+                                            <label>
+                                            <i class="icon-right-hand"></i>&nbsp;&nbsp;6-7  (39)
+                                            </label>
+                                            </li>
+                                            <li>
+                                            <label>
+                                            <i class="icon-right-hand"></i>&nbsp;&nbsp;&lt;6  (20)
+                                            </label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p><b>Time of the year</b></p>
+                                        <ul>
+                                            <li>
+                                            <label>
+                                            <i class="icon-right-hand"></i>&nbsp;&nbsp; 
+                                            </label>
+                                            </li>
+                                            <li>
+                                            <label>
+                                            <i class="icon-right-hand"></i>&nbsp;&nbsp; 
+                                            </label>
+                                            </li>
+                                            <li>
+                                            <label>
+                                            <i class="icon-right-hand"></i>&nbsp;&nbsp;                                                 </label>
+                                            </li>
+                                            <li>
+                                            <label>
+                                            <i class="icon-right-hand"></i>&nbsp;&nbsp; 
+                                            </label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- review section -->
         </div>
         <!-- /container -->
     </div>
     <!-- /bg_color_1 -->
 </main>
 <!--/main-->
+<!-- Modal -->
+<div class="modal fade" id="hotelImageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /hotel image -->
+<div class="modal fade" id="map-popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /map modal -->
 @endsection
