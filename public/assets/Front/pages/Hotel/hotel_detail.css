@@ -271,7 +271,7 @@
     height: 50px;
     line-height: 50px;
     font-size: 20px;
-    border-radius: 5px;
+    border-radius: 5px 5px 5px 0;
     float: left;
     margin-right: 15px;
 }
@@ -388,7 +388,7 @@
     height: 75px;
     line-height: 75px;
     font-size: 25px;
-    border-radius: 5px;
+    border-radius: 5px 5px 5px 0;
     margin-bottom: 5px;
 }
 .hotel-review-section .review-content .review-left-sec span {
@@ -402,7 +402,7 @@
     margin-top: 10px;
 }
 .hotel-review-section .review-content .progress-sec .progress-bar {
-    background-color: #488bf8;
+    background-color: #0054a6;
 }
 .hotel-review-section .review-content .progress-sec .progress-div p {
     margin: 0px;
@@ -434,7 +434,7 @@
     height: 50px;
     line-height: 50px;
     font-size: 20px;
-    border-radius: 5px;
+    border-radius: 5px 5px 5px 0;
     float: left;
     margin-right: 15px;
 }
