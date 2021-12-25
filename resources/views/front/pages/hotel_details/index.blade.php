@@ -29,24 +29,24 @@
                         <div class="row">
                             <div class="col-sm-4 md-pt">
                                 <div class="md-image">
-                                    <img src="https://cf.bstatic.com/xdata/images/hotel/max500/241265128.jpg?k=36838151580dc6f5b9a57731d26003c0d418c6d462eec2715adc8c134e27b335&o=&hp=1" alt="">
-                                    <img src="https://cf.bstatic.com/xdata/images/hotel/max500/287822312.jpg?k=050bd7d7d5213c5cc5c761fb5499c5bcf865f4e9b1c65235a880bf96ae53c2b2&o=&hp=1" alt="">
+                                    <img src="{{$hotelContents->hotelImages[0]->url}}" alt="">
+                                    <img src="{{$hotelContents->hotelImages[1]->url}}" alt="">
                                 </div>
                             </div>
                             <div class="col-sm-8 lg-pt">
                                 <div class="lg-image">
-                                    <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/134858615.jpg?k=73791e51bc9f8f8ce7ab21524524ecf06930e22e599c5fcf526b50f7e2a95f55&o=&hp=1" alt="">
+                                    <img src="{{$hotelContents->hotelImages[2]->url}}" alt="">
                                 </div>
                             </div>
                             <div class="col-sm-12">
                                 <div class="sm-image">
-                                    <img src="https://cf.bstatic.com/xdata/images/hotel/max300/287822331.jpg?k=1d8138955b1efe08040cf3ef9182dcb02da3e32381fd3ba52eb6726afeb4861e&o=&hp=1" alt="">
-                                    <img src="https://cf.bstatic.com/xdata/images/hotel/max300/241208936.jpg?k=446779130191da1a2cbf2922d3b14478db2386d84161f108b7b273c41aa96cd3&o=&hp=1" alt="">
-                                    <img src="https://cf.bstatic.com/xdata/images/hotel/max300/241208951.jpg?k=4a4e68798a1e74fe934d05cf4bfdaf11fba31ccd86fe5f7143f3dcca6849bed2&o=&hp=1" alt="">
-                                    <img src="https://cf.bstatic.com/xdata/images/hotel/max300/241209242.jpg?k=893a3470b6b48843516883c364d2e9a184386e3bc94dbc4b5aa36452a3760257&o=&hp=1" alt="">
-                                    <img src="https://cf.bstatic.com/xdata/images/hotel/max300/241209233.jpg?k=b83fc8cdf413c0c4efb7c829322a9f1686b8b8355562bff01116183cc25ee56f&o=&hp=1" alt="">
+                                    <img src="{{$hotelContents->hotelImages[3]->url}}" alt="">
+                                    <img src="{{$hotelContents->hotelImages[4]->url}}" alt="">
+                                    <img src="{{$hotelContents->hotelImages[5]->url}}" alt="">
+                                    <img src="{{$hotelContents->hotelImages[6]->url}}" alt="">
+                                    <img src="{{$hotelContents->hotelImages[7]->url}}" alt="">
                                     <a href="javascript:onvoid(0)" data-toggle="modal" data-target="#hotelImageModal" class="hotel-modal">
-                                        <img src="https://cf.bstatic.com/xdata/images/hotel/max300/43444905.jpg?k=3773423c3cc4ac3d9f8a1a1d5206d5dc89b521e0f2594edf0fce107e5793aa34&o=&hp=1" alt="">
+                                        <img src="{{$hotelContents->hotelImages[8]->url}}" alt="">
                                         <p>+45 photos</p>
                                     </a>
                                 </div>
@@ -58,15 +58,19 @@
                         <div class="row">
                             <div class="col-md-9">
                                 <ul>
-                                    <li class="selected-type">3.0-star Serviced Apartment</li>
+                                    <li class="selected-type">{{$hotelContents->hotelRating}}-star Serviced Apartment</li>
                                 </ul>
                                 <h3>
-                                    Camp Inn Hotel
+                                    {{$hotelContents->name}}
                                     <span class="star-rating">
-                                        <i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i>
+                                        @php
+                                            for($i=0; $i<$hotelContents->hotelRating; $i++){
+                                                echo '<i class="icon_star"></i>';
+                                            }
+                                        @endphp
                                     </span>
                                 </h3>
-                                <p>Willem de Zwijgerlaan 350, 1055 RD Amsterdam, Amsterdam, 1055 RD, Netherlands, Netherlands</p>
+                                <p>{{$hotelContents->address}}, {{$hotelContents->city}}, {{$hotelContents->country}}</p>
                             </div>
                             <div class="col-md-3">
                                 <div class="hotel-price text-center text-md-right">
@@ -1220,72 +1224,69 @@
             <!-- /row -->
             <div class="room-select-section" id="room-selection-div">
                 <h3>Select your room</h3>
-                <div class="room-div room-info-box">
-                    <h6>TWIN STANDARD ROOM-Room Only</h6>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="room-head hidden-xs">
-                                <div class="row">
-                                    <div class="col-md-5">
-                                        <p>Benefits</p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <p>Sleeps</p>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <p>Price</p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <p>Most Booked</p>
+                @forelse($roomData as $row)
+                    <div class="room-div room-info-box">
+                        <h6>{{$row->roomType}}</h6>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="room-head hidden-xs">
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <p>Benefits</p>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <p>Sleeps</p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p>Price</p>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <p>Most Booked</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="room-content">
-                                <div class="row">
-                                    <div class="col-md-5">
-                                        <p><b>Your price includes:</b></p>
-                                        <ul>
-                                            <li>
-                                                <i class="fa fa-check"></i>
-                                                Free Wi-Fi
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-check"></i>
-                                                Extra low price! (non-refundable)
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-check"></i>
-                                                Room Only                                         
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="icons-include">
-                                            <i class="fa fa-male"></i>
-                                            <i class="fa fa-male"></i>
-                                            <!--<span class="more-people">+</span>-->
+                                <div class="room-content">
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <p><b>Your price includes:</b></p>
+                                            <ul>
+                                                @foreach($row->facilities as $facility)
+                                                    <li>
+                                                        <i class="fa fa-check"></i>
+                                                        {{$facility}}
+                                                    </li>
+                                                @endforeach
+                                            </ul>
                                         </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="room-price-sec">
-                                            <p class="no-price">€ 61.99</p>
-                                            <p class="offer-price">€ 56.35</p>
+                                        <div class="col-md-2">
+                                            <div class="icons-include">
+                                                <i class="fa fa-male"></i>
+                                                <i class="fa fa-male"></i>
+                                                <!--<span class="more-people">+</span>-->
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <form action="#" method="post" accept-charset="utf-8">                 
-                                            <input type="hidden" name="productId" value="trx102">
-                                            <input type="hidden" name="tokenId" value="20211224_1_2_0_104_zen8a3c23fffcab495e8113069a6927b31c_1640308564">
-                                            <input type="hidden" name="rateBasisId" value="NDMyOTI=">
-                                            <input type="hidden" name="roomId" value="7253">
-                                            <button type="submit" class="btn-book">Book Now</button>
-                                        </form>
+                                        <div class="col-md-3">
+                                            <div class="room-price-sec">
+                                                <p class="no-price">€ {{round($row->netPrice*1.1, 2)}}</p>
+                                                <p class="offer-price">€ {{$row->netPrice}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <form action="#" method="post" accept-charset="utf-8">                 
+                                                <input type="hidden" name="productId" value="">
+                                                <input type="hidden" name="tokenId" value="">
+                                                <input type="hidden" name="rateBasisId" value="">
+                                                <input type="hidden" name="roomId" value="">
+                                                <button type="submit" class="btn-book">Book Now</button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @empty
+                @endforelse
             </div>
             <!-- filter option -->
             <div class="more-hotel-info">
@@ -1353,14 +1354,14 @@
                     <div class="col-lg-8">
                         <div class="hotel-desc-sec">
                             <div class="hotel-img-div">
-                                <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/134858615.jpg?k=73791e51bc9f8f8ce7ab21524524ecf06930e22e599c5fcf526b50f7e2a95f55&o=&hp=1" alt="Hotel Image" class="">
+                                <img src="{{$hotelContents->hotelImages[2]->url}}" alt="Hotel Image" class="">
                                 <div class="hotel-name-info">
                                   <h5>More about</h5>
-                                  <h3>Camp Inn Hotel</h3>
+                                  <h3>{{$hotelContents->name}}</h3>
                                 </div>    
                             </div>
                             <div class="hotel-desc-div">
-                                <p><br><b>Property Information:</b> <br>&nbsp;Pets not allowed  Check-in time starts at 2 PM  Check-out time is noon&nbsp; <br><br><b>Property Description:</b> <br>&nbsp;</p><p><b>Property Location</b> <br>With a stay at Camp Inn Hotel Amsterdam in Amsterdam (Amsterdam West), you'll be within a 10-minute drive of Anne Frank House and The 9 Streets.  This hotel is 2.3 mi (3.7 km) from Rijksmuseum and 2.3 mi (3.8 km) from Vondelpark.</p><p><b>Rooms</b> <br>Make yourself at home in one of the 42 air-conditioned rooms featuring LCD televisions. Complimentary wireless Internet access keeps you connected, and digital programming is available for your entertainment. Private bathrooms with showers feature rainfall showerheads and complimentary toiletries. Conveniences include safes and desks, and housekeeping is provided daily.</p><p><b>Amenities</b> <br>Enjoy recreation amenities such as bicycles to rent or take in the view from a terrace.</p><p><b>Dining</b> <br>Mingle with other guests at the complimentary reception, held daily. Buffet breakfasts are served on weekdays from 7:30 AM to 10:30 AM for a fee.</p><p><b>Business, Other Amenities</b> <br>Featured amenities include a 24-hour front desk, luggage storage, and coffee/tea in a common area.</p>&nbsp; <br><br><b>Room Information:</b> <br>&nbsp;<p><b>National Rating</b> <br>This property does not have a Netherlands Tourist Board rating. For the benefit of our customers, we have provided a rating based on our rating system.</p><p><b>Fees</b> <br></p><p>The following fees and deposits are charged by the property at time of service, check-in, or check-out. </p> <ul> <li>Fee for buffet breakfast: EUR 15 per person (approximately)</li>                              </ul> <p>The above list may not be comprehensive. Fees and deposits may not include tax and are subject to change. </p><p></p><p><b>Mandatory Fees and Taxes</b> <br></p><p>You'll be asked to pay the following charges at the property:</p> <ul><li>A 6.422 percent city/local tax will be charged</li></ul> <p>We have included all charges provided to us by the property. However, charges can vary, for example, based on length of stay or the room you book. </p><p></p>&nbsp; <br><br><b>Check In Instructions:</b> <br>&nbsp;Extra-person charges may apply and vary depending on property policy. <br>Government-issued photo identification and a credit card, debit card, or cash deposit are required at check-in for incidental charges. <br>Special requests are subject to availability upon check-in and may incur additional charges. Special requests cannot be guaranteed.  <ul><li>The name on the credit card used at check-in to pay for incidentals must be the primary name on the guestroom reservation. </li>Special cancellation policies or charges may apply for group reservations (more than 8 rooms for the same property / stay dates). </ul>&nbsp; <br><br><b>Check In Instructions:</b> <br>&nbsp;<p><b>National Rating</b> <br>This property does not have a Netherlands Tourist Board rating. For the benefit of our customers, we have provided a rating based on our rating system.</p><p><b>Fees</b> <br></p><p>The following fees and deposits are charged by the property at time of service, check-in, or check-out. </p> <ul> <li>Fee for buffet breakfast: EUR 15 per person (approximately)</li>                              </ul> <p>The above list may not be comprehensive. Fees and deposits may not include tax and are subject to change. </p><p></p><p><b>Mandatory Fees and Taxes</b> <br></p><p>You'll be asked to pay the following charges at the property:</p> <ul><li>A 6.422 percent city/local tax will be charged</li></ul> <p>We have included all charges provided to us by the property. However, charges can vary, for example, based on length of stay or the room you book. </p><p></p>&nbsp; <br><p></p>
+                                <p>{{$hotelContents->description->content}}</p>
                             </div>
                         </div>
                     </div>
@@ -1425,7 +1426,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-9 text-left">
-                                                    <p class="rate-text"></p>
+                                                    <p class="rate-text">Cleanliness</p>
                                                 </div>
                                                 <div class="col-3 text-right">
                                                     <p class="rate-num">2.5</p>
@@ -1440,7 +1441,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-9 text-left">
-                                                    <p class="rate-text"></p>
+                                                    <p class="rate-text">Sleep</p>
                                                 </div>
                                                 <div class="col-3 text-right">
                                                     <p class="rate-num">3.0</p>
@@ -1455,7 +1456,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-9 text-left">
-                                                    <p class="rate-text">Location</p>
+                                                    <p class="rate-text">Location/Hotel Name</p>
                                                 </div>
                                                 <div class="col-3 text-right">
                                                     <p class="rate-num">3.0</p>
@@ -1470,7 +1471,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-9 text-left">
-                                                    <p class="rate-text"></p>
+                                                    <p class="rate-text">Room Comfort & Quality</p>
                                                 </div>
                                                 <div class="col-3 text-right">
                                                     <p class="rate-num">2.0</p>
@@ -1485,7 +1486,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-9 text-left">
-                                                    <p class="rate-text"></p>
+                                                    <p class="rate-text">Service</p>
                                                 </div>
                                                 <div class="col-3 text-right">
                                                     <p class="rate-num">3.0</p>
@@ -1500,7 +1501,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-9 text-left">
-                                                    <p class="rate-text"></p>
+                                                    <p class="rate-text">Value for money</p>
                                                 </div>
                                                 <div class="col-3 text-right">
                                                     <p class="rate-num">2.5</p>

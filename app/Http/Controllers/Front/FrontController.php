@@ -66,9 +66,12 @@ class FrontController extends Controller
 
     public function hotel_details(Request $request, $sessionId, $productId, $tokenId, $hotelId)
     {
-        $data = getRoomData($sessionId, $productId, $tokenId, $hotelId);
-        
-        return view('front.pages.hotel_details.index');
+        $roomData = getRoomData($sessionId, $productId, $tokenId, $hotelId)->roomRates->perBookingRates;
+        $hotelContents = getHotelContents($sessionId, $productId, $tokenId, $hotelId);
+        return view('front.pages.hotel_details.index', [
+            'roomData'  => $roomData,
+            'hotelContents'  => $hotelContents,
+        ]);
     }
 
     public function wishlist(Request $request)

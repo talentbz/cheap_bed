@@ -2,12 +2,14 @@
     width: 100%;
     min-height: 350px;
     max-height: 350px;
+    object-fit: cover;
 }
 .md-image img{
     width: 100%;
     min-height: 170px;
     max-height: 170px;
     margin-bottom: 10px;
+    object-fit: cover;
 }
 .lg-pt {
     padding-left: 5px !important;
@@ -23,6 +25,7 @@
     min-height: 130px;
     max-height: 130px;
     padding-left: 10px;
+    object-fit: cover;
 }
 .hotel-modal {
     position: relative;

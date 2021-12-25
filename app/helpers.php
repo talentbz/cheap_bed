@@ -68,7 +68,15 @@ function getRoomData($sessionId, $productId, $tokenId, $hotelId){
     ]);
     return json_decode($response);
 }
-
+function getHotelContents($sessionId, $productId, $tokenId, $hotelId){
+    $response = Http::get('https://travelnext.works/api/hotel-api-v6/hotelDetails', [
+        "sessionId" => $sessionId,
+        "productId" => $productId,
+        "tokenId" => $tokenId,
+        "hotelId" => $hotelId,
+    ]);
+    return json_decode($response);
+}
 function paginate($items, $perPage = 10, $page = null, $options = [])
 {
     $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
