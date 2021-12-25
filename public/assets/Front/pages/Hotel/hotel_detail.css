@@ -11,6 +11,16 @@
     margin-bottom: 10px;
     object-fit: cover;
 }
+.gal {
+    -webkit-column-count: 5; /* Chrome, Safari, Opera */
+    -moz-column-count: 5; /* Firefox */
+    column-count: 5;
+}	
+.gal img{ 
+    width: 100%; 
+    padding: 7px 0;
+    border-radius: 10px;
+}
 .lg-pt {
     padding-left: 5px !important;
 }
@@ -513,4 +523,14 @@
     font-size: 14px;
     color: #777;
     margin-bottom: 5px;
+}
+img.lg-object.lg-image {
+    width: 800px !important;
+}
+@media (max-width: 500px) {
+    .gal {
+        -webkit-column-count: 1; /* Chrome, Safari, Opera */
+        -moz-column-count: 1; /* Firefox */
+        column-count: 1;
+        }
 }

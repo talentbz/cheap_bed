@@ -1,4 +1,9 @@
 @extends('front.layouts.index')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.4/css/lg-fb-comment-box.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.4/css/lg-transitions.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.4/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.4/img/loading.gif">
     <link href="{{ URL::asset('/assets/Front/pages/Hotel/hotel_detail.css') }}" rel="stylesheet" type="text/css" />
 @section('css')
 @endsection
@@ -47,7 +52,7 @@
                                     <img src="{{$hotelContents->hotelImages[7]->url}}" alt="">
                                     <a href="javascript:onvoid(0)" data-toggle="modal" data-target="#hotelImageModal" class="hotel-modal">
                                         <img src="{{$hotelContents->hotelImages[8]->url}}" alt="">
-                                        <p>+45 photos</p>
+                                        <p>+{{count($hotelContents->hotelImages)-8}} photos</p>
                                     </a>
                                 </div>
                             </div>
@@ -1587,13 +1592,25 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">{{$hotelContents->name}}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        ...
+         <div class="col-md-12">
+             <div class="row">
+                 <div class="gal">
+                     <div id="aniimated-thumbnials">
+                        @foreach($hotelContents->hotelImages as $row)
+                        <a href="{{$row->url}}">
+                            <img src="{{$row->url}}" alt="">
+                        </a>
+                        @endforeach
+                     </div>
+                 </div>
+             </div>
+         </div>                                   
       </div>
     </div>
   </div>
@@ -1615,4 +1632,18 @@
   </div>
 </div>
 <!-- /map modal -->
+
+@endsection
+@section('script')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.4/js/lightgallery-all.min.js"></script>
+<script>
+     $(function() {
+        $('#aniimated-thumbnials').lightGallery({
+            thumbnail: true,
+        });
+    });
+</script>
 @endsection
