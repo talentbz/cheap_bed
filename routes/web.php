@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\Front\FrontController::class, 'index'])->name('front.index');
 Route::any('/hotel_list', [App\Http\Controllers\Front\FrontController::class, 'hotel_list'])->name('front.hotel_list');
-Route::get('/hotel_details/{sessionId}/{productId}/{tokenId}/{hotelId}', [App\Http\Controllers\Front\FrontController::class, 'hotel_details'])->name('front.hotel_details');
+Route::get('/hotel_details/{sessionId}/{productId}/{tokenId}/{hotelId}/{hotel_price}', [App\Http\Controllers\Front\FrontController::class, 'hotel_details'])->name('front.hotel_details');
 Route::get('/restaurant', [App\Http\Controllers\Front\FrontController::class, 'restaurant'])->name('front.restaurant');
 Route::any('/search', [App\Http\Controllers\Front\FrontController::class, 'search'])->name('front.search');
 

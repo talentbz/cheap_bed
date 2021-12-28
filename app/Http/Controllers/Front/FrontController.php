@@ -64,13 +64,15 @@ class FrontController extends Controller
         return view('front.pages.faq.index');
     }
 
-    public function hotel_details(Request $request, $sessionId, $productId, $tokenId, $hotelId)
+    public function hotel_details(Request $request, $sessionId, $productId, $tokenId, $hotelId, $hotel_price)
     {
         $roomData = getRoomData($sessionId, $productId, $tokenId, $hotelId)->roomRates->perBookingRates;
         $hotelContents = getHotelContents($sessionId, $productId, $tokenId, $hotelId);
+        
         return view('front.pages.hotel_details.index', [
             'roomData'  => $roomData,
             'hotelContents'  => $hotelContents,
+            'hotel_price' =>$hotel_price,
         ]);
     }
 

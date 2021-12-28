@@ -34,24 +34,52 @@
                         <div class="row">
                             <div class="col-sm-4 md-pt">
                                 <div class="md-image">
-                                    <img src="{{$hotelContents->hotelImages[0]->url}}" alt="">
-                                    <img src="{{$hotelContents->hotelImages[1]->url}}" alt="">
+                                    <img src="{{$hotelContents->hotelImages[0] ? $hotelContents->hotelImages[0]->url:asset('/assets/Front/img/hotel_not_found.png')}}" alt="">
+                                    <img src="{{$hotelContents->hotelImages[1] ? $hotelContents->hotelImages[1]->url : asset('/assets/Front/img/hotel_not_found.png')}}" alt="">
                                 </div>
                             </div>
                             <div class="col-sm-8 lg-pt">
                                 <div class="lg-image">
-                                    <img src="{{$hotelContents->hotelImages[2]->url}}" alt="">
+                                    @if(array_key_exists(2, $hotelContents->hotelImages))
+                                        <img src="{{$hotelContents->hotelImages[2]->url}}" alt="">
+                                    @else
+                                        <img src="{{asset('/assets/Front/img/hotel_not_found.png')}}" alt="">
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-sm-12">
                                 <div class="sm-image">
-                                    <img src="{{$hotelContents->hotelImages[3]->url}}" alt="">
-                                    <img src="{{$hotelContents->hotelImages[4]->url}}" alt="">
-                                    <img src="{{$hotelContents->hotelImages[5]->url}}" alt="">
-                                    <img src="{{$hotelContents->hotelImages[6]->url}}" alt="">
-                                    <img src="{{$hotelContents->hotelImages[7]->url}}" alt="">
+                                    @if(array_key_exists(3, $hotelContents->hotelImages))
+                                        <img src="{{$hotelContents->hotelImages[3]->url}}" alt="">
+                                    @else
+                                        <img src="{{asset('/assets/Front/img/hotel_not_found.png')}}" alt="">
+                                    @endif
+                                    @if(array_key_exists(4, $hotelContents->hotelImages))
+                                        <img src="{{$hotelContents->hotelImages[4]->url}}" alt="">
+                                    @else
+                                        <img src="{{asset('/assets/Front/img/hotel_not_found.png')}}" alt="">
+                                    @endif
+                                    @if(array_key_exists(5, $hotelContents->hotelImages))
+                                        <img src="{{$hotelContents->hotelImages[5]->url}}" alt="">
+                                    @else
+                                        <img src="{{asset('/assets/Front/img/hotel_not_found.png')}}" alt="">
+                                    @endif
+                                    @if(array_key_exists(6, $hotelContents->hotelImages))
+                                        <img src="{{$hotelContents->hotelImages[6]->url}}" alt="">
+                                    @else
+                                        <img src="{{asset('/assets/Front/img/hotel_not_found.png')}}" alt="">
+                                    @endif
+                                    @if(array_key_exists(7, $hotelContents->hotelImages))
+                                        <img src="{{$hotelContents->hotelImages[7]->url}}" alt="">
+                                    @else
+                                        <img src="{{asset('/assets/Front/img/hotel_not_found.png')}}" alt="">
+                                    @endif
                                     <a href="javascript:onvoid(0)" data-toggle="modal" data-target="#hotelImageModal" class="hotel-modal">
-                                        <img src="{{$hotelContents->hotelImages[8]->url}}" alt="">
+                                        @if(array_key_exists(8, $hotelContents->hotelImages))
+                                            <img src="{{$hotelContents->hotelImages[8]->url}}" alt="">
+                                        @else
+                                            <img src="{{asset('/assets/Front/img/hotel_not_found.png')}}" alt="">
+                                        @endif
                                         <p>+{{count($hotelContents->hotelImages)-8}} photos</p>
                                     </a>
                                 </div>
@@ -79,8 +107,8 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="hotel-price text-center text-md-right">
-                                    <p class="no-price">€ 61.99</p>
-                                    <p class="offer-price">€ 56.35</p>
+                                    <p class="no-price">€ {{round($hotel_price*1.1, 2)}}</p>
+                                    <p class="offer-price">€ {{$hotel_price}}</p>
                                     <a href="#room-selection-div" class="btn btn-primary">Choose Room</a>
                                 </div>
                             </div>
@@ -1359,7 +1387,11 @@
                     <div class="col-lg-8">
                         <div class="hotel-desc-sec">
                             <div class="hotel-img-div">
-                                <img src="{{$hotelContents->hotelImages[2]->url}}" alt="Hotel Image" class="">
+                                @if(array_key_exists(2, $hotelContents->hotelImages))
+                                    <img src="{{$hotelContents->hotelImages[2]->url}}" alt="Hotel Image" class="">
+                                @else
+                                   <img src="{{$hotelContents->hotelImages[0]->url}}" alt="Hotel Image">
+                                @endif
                                 <div class="hotel-name-info">
                                   <h5>More about</h5>
                                   <h3>{{$hotelContents->name}}</h3>

@@ -108,8 +108,13 @@
     background: #FFC107;
     color: #222;
   }
+  .no-price {
+    text-align: end;
+    padding-right: 23px;
+    margin-top: 16px;
+    text-decoration: line-through;
+  }
   .price {
-    margin: 30px 0;
     text-align: center;
   }
   .price strong {

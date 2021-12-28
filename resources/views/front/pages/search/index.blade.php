@@ -235,7 +235,8 @@
                 var productId=data[i].productId;
                 var tokenId=data[i].tokenId;
                 var hotelId=data[i].hotelId;
-                hotel_url = `{{url('/hotel_details')}}/${sessionId}/${productId}/${tokenId}/${hotelId}`;
+                var hotel_price = data[i].total
+                hotel_url = `{{url('/hotel_details')}}/${sessionId}/${productId}/${tokenId}/${hotelId}/${hotel_price}`;
                 html = '<div class="box_list">';
                     html += '<div class="row">';
                         html += '<div class="col-md-4">';
@@ -289,6 +290,7 @@
                         html += '<div class="col-md-3">';
                             html += '<div class="review">';
                                 html += '<div class="score"><span>Superb<em>'+data[i].tripAdvisorReview+' Reviews</em></span><strong>'+data[i].tripAdvisorRating+'</strong></div>';
+                                html += '<h6 class="no-price">€ '+(data[i].total*1.1).toFixed(2)+'</h6>';
                                 html += '<h2 class="price"><strong>€ '+data[i].total+'</strong></h2>';
                                 html += '<a href="'+hotel_url+'" class="btn-book">Reserve</a>';
                             html += '</div>';
