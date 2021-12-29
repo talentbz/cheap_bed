@@ -1,0 +1,21 @@
+.deatels-search {
+    padding-bottom: 0;
+    background-color: #fff;
+    border: 1px solid #ededed;
+    box-shadow: 0 3px 6px 0 rgb(140 152 164 / 25%);
+    border-radius: 4px;
+    margin-top: 20px;
+}
+.deatels-search .heading {
+    width: 100%;
+    background-color: #edf7fd;
+    padding: 6px 9px;
+}
+.deatels-search .heading h2 {
+    font-size: 18px;
+    font-family: 'Poppins-Medium',sans-serif;
+    color: #333;
+    margin-top: 8px;
+    padding: 0;
+    margin-left: 15px;
+}

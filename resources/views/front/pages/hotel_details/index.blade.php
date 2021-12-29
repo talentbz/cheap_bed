@@ -34,8 +34,16 @@
                         <div class="row">
                             <div class="col-sm-4 md-pt">
                                 <div class="md-image">
-                                    <img src="{{$hotelContents->hotelImages[0] ? $hotelContents->hotelImages[0]->url:asset('/assets/Front/img/hotel_not_found.png')}}" alt="">
-                                    <img src="{{$hotelContents->hotelImages[1] ? $hotelContents->hotelImages[1]->url : asset('/assets/Front/img/hotel_not_found.png')}}" alt="">
+                                    @if(array_key_exists(0, $hotelContents->hotelImages))
+                                        <img src="{{$hotelContents->hotelImages[0]->url}}" alt="">
+                                    @else
+                                        <img src="{{asset('/assets/Front/img/hotel_not_found.png')}}" alt="">
+                                    @endif
+                                    @if(array_key_exists(1, $hotelContents->hotelImages))
+                                        <img src="{{$hotelContents->hotelImages[1]->url}}" alt="">
+                                    @else
+                                        <img src="{{asset('/assets/Front/img/hotel_not_found.png')}}" alt="">
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-sm-8 lg-pt">
@@ -1305,11 +1313,12 @@
                                             </div>
                                         </div>
                                         <div class="col-md-2">
-                                            <form action="#" method="post" accept-charset="utf-8">                 
-                                                <input type="hidden" name="productId" value="">
-                                                <input type="hidden" name="tokenId" value="">
-                                                <input type="hidden" name="rateBasisId" value="">
-                                                <input type="hidden" name="roomId" value="">
+                                            <form action="{{route('front.hotel_check_out')}}" method="post" accept-charset="utf-8">       
+                                                @csrf          
+                                                <input type="hidden" name="productId" value="{{$row->productId}}">
+                                                <input type="hidden" name="tokenId" value="{{$tokenId}}">
+                                                <input type="hidden" name="rateBasisId" value="{{$row->rateBasisId}}">
+                                                <input type="hidden" name="sessionId" value="{{$sessionId}}">
                                                 <button type="submit" class="btn-book">Book Now</button>
                                             </form>
                                         </div>

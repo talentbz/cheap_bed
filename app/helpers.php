@@ -13,8 +13,6 @@ function str_limit($string, $length) {
 }
 
 function getHotelData($ip_address, $check_in_date, $check_out_date, $longitude, $latitude, $adult, $children, $rooms){
-    
-
     $curl = curl_init();
     curl_setopt_array($curl, array(
     CURLOPT_URL => 'https://travelnext.works/api/hotel-api-v6/hotel_search',
@@ -77,6 +75,16 @@ function getHotelContents($sessionId, $productId, $tokenId, $hotelId){
     ]);
     return json_decode($response);
 }
+function checkRoomRate($sessionId, $productId, $tokenId, $rateBasisId){
+    $response = Http::post('https://travelnext.works/api/hotel-api-v6/get_rate_rules', [
+        "sessionId" => $sessionId,
+        "productId" => $productId,
+        "tokenId" => $tokenId,
+        "rateBasisId" => $rateBasisId,
+    ]);
+    return json_decode($response);
+}
+
 function paginate($items, $perPage = 10, $page = null, $options = [])
 {
     $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);

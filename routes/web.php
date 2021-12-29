@@ -22,6 +22,9 @@ Route::any('/hotel_list', [App\Http\Controllers\Front\FrontController::class, 'h
 Route::get('/hotel_details/{sessionId}/{productId}/{tokenId}/{hotelId}/{hotel_price}', [App\Http\Controllers\Front\FrontController::class, 'hotel_details'])->name('front.hotel_details');
 Route::get('/restaurant', [App\Http\Controllers\Front\FrontController::class, 'restaurant'])->name('front.restaurant');
 Route::any('/search', [App\Http\Controllers\Front\FrontController::class, 'search'])->name('front.search');
+//Hotel booking
+Route::post('/hotel/check_out', [App\Http\Controllers\Front\FrontController::class, 'hotel_check_out'])->name('front.hotel_check_out');
+Route::get('/hotel/check_out/test', [App\Http\Controllers\Front\FrontController::class, 'hotel_check_out_test'])->name('front.hotel_check_out_test');
 
 Route::get('/about_us', [App\Http\Controllers\Front\FrontController::class, 'about_us'])->name('front.about_us');
 Route::get('/contact_us', [App\Http\Controllers\Front\FrontController::class, 'contact_us'])->name('front.contact_us');
@@ -47,7 +50,6 @@ Route::prefix('/user')->middleware(['auth:web'])->group(function () {
     Route::get('/change_password', [App\Http\Controllers\Front\UserController::class, 'edit_profile'])->name('front.user.change_password');
 });
 
-Route::post('/test', [App\Http\Controllers\Front\FrontController::class, 'test'])->name('front.test');
 //admin dashboard
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'admin'], function(){

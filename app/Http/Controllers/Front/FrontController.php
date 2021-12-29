@@ -65,7 +65,9 @@ class FrontController extends Controller
     }
 
     public function hotel_details(Request $request, $sessionId, $productId, $tokenId, $hotelId, $hotel_price)
-    {
+    {   
+        $sessionId = getRoomData($sessionId, $productId, $tokenId, $hotelId)->sessionId; 
+        $tokenId = getRoomData($sessionId, $productId, $tokenId, $hotelId)->tokenId; 
         $roomData = getRoomData($sessionId, $productId, $tokenId, $hotelId)->roomRates->perBookingRates;
         $hotelContents = getHotelContents($sessionId, $productId, $tokenId, $hotelId);
         
@@ -73,34 +75,27 @@ class FrontController extends Controller
             'roomData'  => $roomData,
             'hotelContents'  => $hotelContents,
             'hotel_price' =>$hotel_price,
+            'sessionId' => $sessionId,
+            'tokenId' => $tokenId,
         ]);
+    }
+    public function hotel_check_out(Request $request)
+    {
+        $sessionId = $request->sessionId;
+        $tokenId = $request->tokenId;
+        $rateBasisId = $request->rateBasisId;
+        $productId = $request->productId;
+        $data = checkRoomRate($sessionId, $productId, $tokenId, $rateBasisId);
+        return view('front.pages.hotel_booking.checkout');
+    }
+
+    public function hotel_check_out_test(Request $request){
+        return view('front.pages.hotel_booking.test');
     }
 
     public function wishlist(Request $request)
     {
         return view('front.pages.wishlist.index');
     }
-
-    public function test(Request $request)
-    {
-        $sessionId =$request->sessionId;
-        $productId =$request->productId;
-        $tokenId =$request->tokenId;
-        $hotelId =$request->hotelId;
-
-        $data = getRoomData($sessionId, $productId, $tokenId, $hotelId);
-        dd($data);
-    }
-    public function store(Request $request)
-    {
-        $post = new Test;
- 
-        $post->title = $request->title;
-        $post->body = $request->body;
-        $post->slug = $request->slug;
- 
-        $post->save();
- 
-        return response()->json(["result" => "ok"], 201);
-    }
+    
 }
